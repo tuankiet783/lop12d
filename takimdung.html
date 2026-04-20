@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang cá nhân - Tạ Kim Dung</title>
+    <style>
+   
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-image: url('https://scontent.fhan5-10.fna.fbcdn.net/v/t39.30808-6/671822819_843181518815230_6720709489978602861_n.jpg?stp=cp6_dst-jpg_s590x590_tt6&_nc_cat=101&ccb=1-7&_nc_sid=13d280&_nc_ohc=CKuIqHoxnXsQ7kNvwEru16E&_nc_oc=AdoX6HG4_suo9hescKCZGV9mdvMqGcipoeI-G_GR2EhW1QIJakdroheZbpUMAUiGkb0&_nc_zt=23&_nc_ht=scontent.fhan5-10.fna&_nc_gid=2Aqv11h9n0z554kkMKKi6g&_nc_ss=7a3a8&oh=00_Af1VDaVKDmmNbCC7Bk50Oc4NKx5OCFS2Xgnvq73FaLHHuw&oe=69EADEA7'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            color: #ffffff; 
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.5);
+            object-fit: cover;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            margin: 10px 0;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .info {
+            text-align: left;
+            margin: 20px 0;
+            line-height: 1.6;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .info p {
+            margin: 8px 0;
+        }
+
+        .message {
+            font-style: italic;
+            margin: 20px 0;
+        }
+
+        blockquote {
+            margin: 0;
+            padding: 0 10px;
+            border-left: 3px solid #fff;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .back-btn:hover {
+            background: #fff;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <img src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/675222704_843181418815240_7632680734244439616_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=13d280&_nc_ohc=m7W-Q7QYPecQ7kNvwEGFxOa&_nc_oc=AdqROSoz3_TJlCx8lCQm0FmhJdv1SvFmnvCaVa_UksX38cHmrw_4UAvS6XNaNvn15lk&_nc_zt=23&_nc_ht=scontent.fhan5-9.fna&_nc_gid=AgaI6WJ2IAGai82XQSb6ww&_nc_ss=7a3a8&oh=00_Af3uub0LPlgrHku6eg4cVv-qvptTSvs2_KGjNYyosVm7uw&oe=69EADA1B" alt="Ảnh cá nhân" class="avatar">
+        
+        <h1>Tạ Kim Dung</h1>
+        
+        <div class="info">
+            <p><strong>Ngày sinh:</strong> 01/12/2008</p>
+            <p><strong>Quê quán:</strong> Hưng Yên</p>
+            <p><strong>Sở thích:</strong> Xem phim, nghe nhạc, nấu ăn, mỹ phẩm</p>
+        </div>
+
+        <div class="message">
+            <h3>Lời nhắn nhủ:</h3>
+            <blockquote>"Cảm ơn vì đã cùng nhau đi qua một thời thanh xuân rực rỡ, dù mai này mỗi người mỗi hướng, hãy luôn nhớ về nhau nhé!"</blockquote>
+        </div>
+
+        <a href="lop12d.html" class="back-btn">← Quay lại trang chủ</a>
+    </div>
+
+</body>
+</html>
