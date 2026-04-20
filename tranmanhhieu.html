@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Trần Mạnh Hiếu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('https://i.pinimg.com/1200x/f8/a2/12/f8a212b4b15610fbfacde13806d302f4.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        .home-btn-container {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        .home-btn-shadow {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 12px;
+            z-index: -1;
+        }
+
+        .home-btn {
+            background: #ffffff;
+            padding: 12px 25px;
+            border-radius: 12px;
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid #000;
+            position: relative;
+        }
+
+        .card {
+            position: relative;
+            z-index: 2;
+            background: #ffffff;
+            padding: 2rem 3.5rem; 
+            border-radius: 35px;
+            width: 95%;
+            max-width: 650px; 
+            text-align: center;
+            border: 3px solid #000;
+            box-shadow: 15px 15px 0px rgba(0,0,0,0.15);
+        }
+
+        /* --- PHẦN SỬA ĐỔI KÍCH THƯỚC ẢNH TO RA --- */
+        .avatar-container {
+            width: 160px; /* Tăng từ 110px lên 160px */
+            height: 160px; /* Tăng từ 110px lên 160px */
+            background: #000;
+            border-radius: 50%;
+            margin: 0 auto 1rem; /* Điều chỉnh margin phù hợp */
+            border: 5px solid #000; /* Tăng độ dày viền một chút cho cân đối */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Thêm đổ bóng cho ảnh nổi bật */
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* --- HẾT PHẦN SỬA ĐỔI KÍCH THƯỚC ẢNH --- */
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 2px;
+            letter-spacing: -1.5px;
+            text-transform: uppercase;
+        }
+
+        .class-tag {
+            font-size: 1.2rem;
+            color: #2563eb; 
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .info-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px;
+            text-align: left;
+            border-top: 3px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .value {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .hobby-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .hobby-item {
+            background: #fff;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 2px solid #000;
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .content-box {
+            border: 2px solid #000;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 5px;
+            background: #ffffff;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+        }
+
+        .box-text {
+            font-size: 1rem;
+            color: #000;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        .italic {
+            font-style: italic;
+            text-align: center;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="home-btn-container">
+        <div class="home-btn-shadow"></div>
+        <a href="lop12d.html" class="home-btn">
+            <i class="fas fa-home"></i> TRANG CHỦ
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="avatar-container">
+            <img src="https://scontent.fhan5-6.fna.fbcdn.net/v/t39.30808-6/674560697_843105312156184_5258251772196667898_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=13d280&_nc_ohc=QnJfK9ySnuYQ7kNvwEKqZPl&_nc_oc=Adp6_pzErKdEfTq8j7X9i3IU_KRXLwBhicdj3slEAi1eZUHGPlG_z9fFLZiQr5Fhp3Q&_nc_zt=23&_nc_ht=scontent.fhan5-6.fna&_nc_gid=71d0q_auJBPqXJIJJDXihw&_nc_ss=7a3a8&oh=00_Af1A4Vev4yY27sGXQ1wnrKpAo4DRNUvPmUK3j3IMm_RV2A&oe=69EAA9C7" alt="Avatar" class="avatar-img">
+        </div>
+        
+        <h1>TRẦN MẠNH HIẾU</h1>
+        <span class="class-tag">12D - THPT Hưng Yên</span>
+
+        <div class="info-section">
+            <div class="info-block">
+                <span class="label">Ngày sinh</span>
+                <span class="value">06/05/2008</span>
+            </div>
+
+            <div class="info-block">
+                <span class="label">Nơi sinh</span>
+                <span class="value">Hưng Yên</span>
+            </div>
+
+            <div class="info-block full-width">
+                <span class="label">Sở thích cá nhân</span>
+                <div class="hobby-list">
+                    <div class="hobby-item">Bóng rổ</div>
+                    <div class="hobby-item">Hóa học</div>
+                    <div class="hobby-item">Game</div>
+                    <div class="hobby-item">Ngủ</div>
+                </div>
+            </div>
+
+            <div class="info-block full-width">
+                <span class="label">Giới thiệu bản thân</span>
+                <div class="content-box">
+                    <p class="box-text">
+                        Mình siêu ĐẸP ZAIIII, siêu CUTEEEEE, chơi bóng rổ siêu đẳng cấp
+                    </p>
+                </div>
+            </div>
+
+            <div class="info-block full-width">
+                <span class="label">Lời nhắn gửi</span>
+                <div class="content-box">
+                    <span class="box-text italic">"Chúc em hạnh phúc và Chúc anh em thi tốt!"</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
