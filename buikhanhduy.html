@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFILE | BÙI KHÁNH DUY</title>
+
+    <style>
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        body {
+            width: 100%; height: 100vh;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            overflow: hidden;
+            
+            background: linear-gradient(315deg, #001F3F 0%, #003366 40%, #007A99 70%, #00FFFF 100%);
+            background-size: 300% 300%;
+            animation: diagonalMove 4s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes diagonalMove {
+            0% { background-position: 100% 0%; }
+            50% { background-position: 0% 100%; }
+            100% { background-position: 100% 0%; }
+        }
+
+        .home-btn {
+            position: fixed;
+            top: 25px; left: 25px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+        .home-btn:hover { background: rgba(255, 255, 255, 0.3); transform: translateY(-3px); }
+
+        .theten {
+            width: 95%; 
+            max-width: 600px; 
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 25px 50px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .anh img {
+            width: 180px;
+            height: 180px; 
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #fff; 
+            box-shadow: 0 0 35px rgba(0, 255, 255, 0.7); 
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .ten {
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin: 15px 0 2px; 
+            background: linear-gradient(to right, #fff, #00FFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+        }
+
+        .thongtin1 {
+            font-size: 1.15rem;
+            color: #00FFFF;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        .box-style {
+            background: rgba(0, 0, 0, 0.35);
+            padding: 15px 30px; 
+            border-radius: 20px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: left;
+            font-weight: 500;
+        }
+        .box-style b { color: #00FFFF; font-weight: 800; }
+
+        .gioithieu {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00FFFF;
+            margin-bottom: 3px;
+            font-weight: 800;
+        }
+
+        .loichuc {
+            font-style: italic;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-top: 2px solid rgba(255,255,255,0.2);
+            padding-top: 15px;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+    </style>
+</head>
+<body>
+
+    <a href="lop12d.html" class="home-btn">Trang chủ</a>
+
+    <div class="theten">
+        <div class="anh">
+            <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672674045_842450868888295_838222831149978477_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=bTCC_GOeqz4Q7kNvwEf-nud&_nc_oc=AdoJ7QLCQFQW19QlEMrRrr3H9F5vtL1TNa47huoAvPU5INbhf20XjLppuiRrHSG8x40&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=dXnImTqY0oCTab3yOh0Kow&_nc_ss=7a3a8&oh=00_Af0aSqkfYhRzzIUcVOzpPBC4PWhSTERsAAl1LVx4Pb4g3w&oe=69E99866" alt="Bùi Khánh Duy">
+        </div>
+        
+        <h1 class="ten">Bùi Khánh Duy</h1>
+        <p class="thongtin1">Lớp 12D • THPT Hưng Yên</p>
+        
+        <div class="box-style">
+             Ngày tháng năm sinh: <b>06/12/2008</b><br>
+             Quê quán: <b>Phù Cừ, Hưng Yên</b><br>
+             Sở thích: <b>Bóng rổ - Game - Toán</b>
+        </div>
+
+        <div class="box-style">
+            <span class="gioithieu">Giới thiệu bản thân:</span>
+            "Chào mọi người mình là Bùi Khánh Duy, học sinh lớp 12D, mình rất yêu thích bóng rổ và game."
+        </div>
+
+        <p class="loichuc">
+            Mình rất vui vì được đồng hành suốt 3 năm qua cùng mọi người, cảm ơn mọi người rất nhi.<br>  
+			Chúc ae lớp 12D đỗ được NV1!!! (˵ •̀ ᴗ - ˵ ) ✧
+        </p>
+    </div>
+
+</body>
+</html>
