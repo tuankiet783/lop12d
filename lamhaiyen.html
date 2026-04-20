@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lâm Hải Yến - Lưu giữ thanh xuân 12D</title>
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Segoe UI', 'Roboto', 'Poppins', 'Quicksand', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+          /* Ảnh nền từ Facebook CDN - tối ưu hiển thị */
+          background-image: url('https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672679062_1492394885839173_336103980744445435_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeF9sI3slgBotOFlj8NbWynVAkjIdKTfkiwCSMh0pN-SLCPxXeMdr8yb_fhu82kivCYP8G8IBNbkBrcNeyx7TUwE&_nc_ohc=QbjuFgtqoCEQ7kNvwHDvTYe&_nc_oc=Adr_C3PPFpezQlVqil_4SXZWxPGEsjCQ235jeTxwu88dUtIOCKzCqh2LL1v24XSvFYE&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=gfjkmeSb4p2zmUP08PgOMg&_nc_ss=7a3a8&oh=00_Af3_wt-40uXBiHir5ocmoBvSCedwUl3xYzlkmnK0eVvRcg&oe=69E99A2B');
+          background-size: cover;
+          background-position: center center;
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          line-height: 1.5;
+          padding: 2rem 1.5rem;
+          min-height: 100vh;
+      }
+
+      /* container chính - hoàn toàn trong suốt */
+      .profile-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          background: transparent;
+          border-radius: 48px;
+          overflow: hidden;
+      }
+
+      /* header - mờ để thấy rõ ảnh nền */
+      .hero-greeting {
+          background: rgba(251, 194, 194, 0.2);
+          backdrop-filter: blur(3px);
+          padding: 2rem 2.5rem;
+          text-align: center;
+          border-bottom: 2px solid rgba(255, 184, 130, 0.6);
+          border-radius: 40px 40px 0 0;
+      }
+
+      .hero-greeting h1 {
+          font-size: 2.2rem;
+          font-weight: 700;
+          color: #fff5ec;
+          letter-spacing: -0.3px;
+          text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6);
+      }
+
+      .hero-greeting p {
+          font-size: 1rem;
+          color: #fff3e8;
+          margin-top: 0.6rem;
+          font-style: italic;
+          text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+      }
+
+      /* nội dung chính */
+      .main-content {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 2rem;
+          padding: 2.5rem 2rem;
+      }
+
+      /* cột trái - avatar + thông tin */
+      .sidebar {
+          flex: 1.2;
+          min-width: 260px;
+          background: rgba(255, 248, 240, 0.5);
+          backdrop-filter: blur(8px);
+          border-radius: 36px;
+          padding: 2rem 1.5rem;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          border: 1px solid rgba(255, 227, 212, 0.6);
+          text-align: center;
+          transition: transform 0.3s ease;
+      }
+
+      .sidebar:hover {
+          transform: translateY(-5px);
+      }
+
+      .avatar-frame {
+          width: 180px;
+          height: 180px;
+          margin: 0 auto 1.5rem;
+          border-radius: 50%;
+          background: linear-gradient(135deg, rgba(255, 195, 160, 0.5), rgba(255, 223, 179, 0.5));
+          padding: 4px;
+          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+      }
+
+      .avatar-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+          background: rgba(255, 255, 240, 0.8);
+          border: 3px solid rgba(255, 245, 230, 0.95);
+      }
+
+      .info-name {
+          font-size: 1.9rem;
+          font-weight: 700;
+          color: #fff3e4;
+          text-shadow: 2px 2px 8px #b84c2c;
+          margin-bottom: 0.5rem;
+      }
+
+      .info-dob, .info-hometown {
+          font-size: 1rem;
+          color: #fff8f0;
+          text-shadow: 1px 1px 5px #9e4a2e;
+          margin: 0.5rem 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.6rem;
+      }
+
+      .intro-text {
+          margin-top: 1.2rem;
+          background: rgba(255, 239, 229, 0.75);
+          backdrop-filter: blur(4px);
+          padding: 1rem 1.2rem;
+          border-radius: 24px;
+          text-align: left;
+          font-size: 0.95rem;
+          color: #2c1a10;
+          border-left: 4px solid #ffb07c;
+          font-weight: 500;
+          line-height: 1.5;
+      }
+
+      /* cột phải */
+      .right-col {
+          flex: 2.2;
+          min-width: 280px;
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+      }
+
+      /* card chung */
+      .card {
+          background: rgba(255, 255, 255, 0.4);
+          backdrop-filter: blur(8px);
+          border-radius: 32px;
+          padding: 1.6rem 2rem;
+          box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.2);
+          border: 1px solid rgba(255, 237, 227, 0.7);
+          transition: all 0.3s ease;
+      }
+
+      .card:hover {
+          transform: translateY(-4px);
+          background: rgba(255, 255, 255, 0.55);
+          box-shadow: 0 18px 32px -12px rgba(0, 0, 0, 0.3);
+      }
+
+      .card-title {
+          font-size: 1.6rem;
+          font-weight: 600;
+          border-left: 6px solid #ffc8a2;
+          padding-left: 1rem;
+          margin-bottom: 1.2rem;
+          color: #fff5ea;
+          text-shadow: 1px 1px 4px #c45a32;
+          display: flex;
+          align-items: center;
+          gap: 0.7rem;
+      }
+
+      .hobby-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.9rem;
+          margin: 1rem 0 0.5rem;
+      }
+
+      .hobby-item {
+          background: rgba(255, 242, 233, 0.85);
+          backdrop-filter: blur(2px);
+          padding: 0.55rem 1.3rem;
+          border-radius: 60px;
+          font-weight: 600;
+          color: #c45a32;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 0.95rem;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          transition: all 0.2s;
+      }
+
+      .hobby-item:hover {
+          background: rgba(255, 242, 233, 0.95);
+          transform: scale(1.02);
+      }
+
+      .message-box {
+          background: rgba(255, 247, 240, 0.75);
+          backdrop-filter: blur(6px);
+          border-radius: 28px;
+          padding: 1.3rem 1.8rem;
+          line-height: 1.65;
+          font-size: 1rem;
+          color: #2d2018;
+          border: 1px dashed rgba(255, 188, 140, 0.8);
+          font-weight: 500;
+      }
+
+      .quote-sign {
+          margin-top: 1rem;
+          text-align: right;
+          font-weight: 600;
+          color: #d46a42;
+          text-shadow: 0 0 3px #ffe0c0;
+      }
+
+      /* nút quay về */
+      .home-link-wrapper {
+          text-align: center;
+          padding: 1rem 2rem 2rem 2rem;
+      }
+
+      .btn-home {
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          background: rgba(233, 180, 139, 0.75);
+          backdrop-filter: blur(6px);
+          color: #2f1f15;
+          padding: 0.9rem 2.2rem;
+          border-radius: 60px;
+          text-decoration: none;
+          font-weight: 700;
+          font-size: 1.1rem;
+          transition: all 0.3s ease;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+          border: 1px solid rgba(255, 255, 210, 0.7);
+      }
+
+      .btn-home:hover {
+          background: rgba(212, 141, 92, 0.9);
+          color: white;
+          transform: scale(1.03);
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      }
+
+      /* footer */
+      .footer-note {
+          text-align: center;
+          padding: 1rem;
+          font-size: 0.8rem;
+          color: #fff5ea;
+          text-shadow: 0px 1px 5px #8a4a2e;
+          border-top: 1px solid rgba(255, 225, 208, 0.5);
+          background: rgba(255, 251, 245, 0.2);
+          backdrop-filter: blur(4px);
+      }
+
+      /* responsive */
+      @media (max-width: 750px) {
+          body {
+              padding: 1rem;
+          }
+          .hero-greeting h1 {
+              font-size: 1.5rem;
+          }
+          .hero-greeting {
+              padding: 1.5rem;
+          }
+          .main-content {
+              flex-direction: column;
+              padding: 1.5rem;
+              gap: 1.5rem;
+          }
+          .card-title {
+              font-size: 1.3rem;
+          }
+          .info-name {
+              font-size: 1.6rem;
+          }
+          .avatar-frame {
+              width: 140px;
+              height: 140px;
+          }
+          .card {
+              padding: 1.2rem 1.5rem;
+          }
+      }
+
+      /* hiệu ứng loading mượt */
+      img {
+          transition: opacity 0.3s;
+      }
+  </style>
+</head>
+<body>
+<div class="profile-container">
+  <!-- Header -->
+  <div class="hero-greeting">
+    <h1>✨ Lưu giữ thanh xuân - Những kỷ niệm 12D thân yêu ✨</h1>
+    <p>🌿 Mỗi khoảnh khắc bên nhau là một mảnh ghép đẹp nhất của tuổi 17, 18 🌿</p>
+  </div>
+
+  <div class="main-content">
+    <!-- Cột trái: Ảnh + thông tin -->
+    <div class="sidebar">
+      <div class="avatar-frame">
+        <img class="avatar-img"
+             src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672684788_1492394939172501_1961813674633219778_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGnTuV--LGqNJnEMhH5A-ktEafe22EMk-8Rp97bYQyT74WNAblX_r4yZCbmq9IQETDMe_cKqAaCy0XHcSvLTm3m&_nc_ohc=7HOHouOIe7cQ7kNvwFXO--v&_nc_oc=AdpjNaWgNoY7M8jhMmAQpwkRBo0haBYYMG9L6rlwTneSn_cFxL0JLSHtCsR6BHG_3hI&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=71xEnzPjQNxcFKnpA4CM9g&_nc_ss=7a3a8&oh=00_Af3VFqSWeojsLId3GWnQhcCXuo4W-PHrHxgUJ_1u6sVwpw&oe=69E985EA"
+             alt="Lâm Hải Yến - 12D"
+             loading="lazy"
+             onerror="this.onerror=null; this.src='https://placehold.co/600x600/ffe0d0/b3592f?text=❤️+H%E1%BA%A3i+Y%E1%BA%BFn+❤️&font=roboto';">
+      </div>
+      <div class="info-name">Lâm Hải Yến</div>
+      <div class="info-dob">🎂 03/06/2008 | 17 tuổi</div>
+      <div class="info-hometown">🏡 Quê quán: Hưng Yên</div>
+      <div class="intro-text">
+        <strong>📖 Vài nét về mình:</strong><br>
+        Mình là một người hướng ngoại, dễ gần và khá hoạt bát. Mình thích trò chuyện, kết nối với mọi người và luôn cố gắng mang đến năng lượng tích cực. Trong cuộc sống, mình đề cao sự chân thành và luôn đối xử với mọi người bằng sự tốt bụng.
+      </div>
+    </div>
+
+    <!-- Cột phải: Sở thích + Lời nhắn -->
+    <div class="right-col">
+      <!-- SỞ THÍCH -->
+      <div class="card">
+        <div class="card-title">
+          🌻 Sở thích cá nhân
+        </div>
+        <div class="hobby-list">
+          <span class="hobby-item">☕ Xem phim để thư giãn và khám phá </span>
+          <span class="hobby-item">✈️ Du lịch, trải nghiệm những nơi mới</span>
+          <span class="hobby-item">📸 Chụp ảnh để lưu giữ những khoảnh khắc đẹp</span>
+        </div>
+        <div style="margin-top: 1.2rem; font-size: 0.9rem; color:#2d2a24; background: rgba(255,242,230,0.8); padding: 0.7rem 1rem; border-radius: 30px; backdrop-filter: blur(2px);">
+          💬 “Mỗi chuyến đi, mỗi cuốn sách, đều giúp mình thêm yêu cuộc sống này. Và mỗi kỷ niệm cùng 12D là nguồn cảm hứng bất tận để mình trưởng thành mỗi ngày.”
+        </div>
+      </div>
+
+      <!-- LỜI NHẮN -->
+      <div class="card">
+        <div class="card-title">
+          💌 Lời nhắn trước ngày ra trường
+        </div>
+        <div class="message-box">
+          <p><strong>Gửi tập thể 12D yêu quý, các thầy cô đáng kính,</strong></p>
+          <p style="margin-top: 12px;">
+            Ba năm cấp ba trôi qua thật nhanh, tựa như một giấc mơ tuổi học trò.
+            Cảm ơn lớp mình - một gia đình thứ hai, nơi có những tràng cười, những giờ học muộn,
+            những lần ôn bài cùng nhau và cả những phút giây 'cãi nhau' rồi lại làm lành.
+            Cảm ơn thầy cô đã luôn kiên nhẫn, truyền cảm hứng và dìu dắt chúng em từng bước trưởng thành.
+          </p>
+          <p style="margin-top: 12px;">
+            Dù mai đây mỗi đứa một phương trời, mình tin rằng tình cảm 12D sẽ mãi đong đầy.
+            Hãy luôn mỉm cười, sống hết mình và đừng quên ghé thăm trang cá nhân của tớ nhé!
+            Chúng ta sẽ luôn là thanh xuân rực rỡ nhất của nhau. 💖
+            Cảm ơn những buổi trưa học nhóm, những lần cùng nhau chạy deadline bài tập, cả những lần động viên nhau khi mệt mỏi.
+            Các cậu là món quà vô giá mà tuổi 17 tớ có được.
+          </p>
+          <p style="margin-top: 12px;">
+            Kính chúc thầy cô luôn mạnh khỏe, hạnh phúc và tiếp tục dìu dắt nhiều thế hệ học trò.
+            Chúng con sẽ luôn nhớ những bài học quý giá không chỉ trên trang sách mà còn là bài học về lòng nhân ái và sự tử tế.
+          </p>
+          <div class="quote-sign">
+            — Hải Yến—
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; margin-top: 10px; opacity:0.7">
+          <span style="color:#ffe0c0; font-size: 1.2rem;">🌸🌸🌸</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nút quay lại trang chủ -->
+  <div class="home-link-wrapper">
+    <a href="lop12d.html" class="btn-home">
+      🏠 Quay lại trang chủ lớp học
+    </a>
+    <p style="font-size: 0.75rem; margin-top: 12px; color:#fff0e0; text-shadow: 0 1px 4px #8a4a2e;">※ Trang chủ dự án: danh sách các thành viên 12D thân thương</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-note">
+    🌟 “Tuổi trẻ đẹp nhất khi có những người bạn đồng hành đáng yêu” 🌟 <br>
+    🌈 Lâm Hải Yến - Lớp 12D - Mãi nhớ những tháng năm rực rỡ
+  </div>
+</div>
+</body>
+</html>
