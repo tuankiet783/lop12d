@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Cá Nhân - Phạm Thu Trang</title>
+  <style>
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #fff5f8; /* Màu hồng nhạt nhẹ nhàng */
+          margin: 0;
+          padding: 0;
+          line-height: 1.6;
+      }
+      .profile-container {
+          max-width: 800px;
+          margin: 40px auto;
+          background: #fff;
+          padding: 30px;
+          border-radius: 20px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+          border: 1px solid #ffe0eb;
+      }
+      .header-profile {
+          text-align: center;
+          border-bottom: 2px dashed #ffb6c1;
+          margin-bottom: 30px;
+          padding-bottom: 20px;
+      }
+      .profile-main {
+          display: flex;
+          gap: 30px;
+          flex-wrap: wrap;
+          align-items: center;
+      }
+      .profile-image {
+          flex: 1;
+          min-width: 250px;
+          text-align: center;
+      }
+      /* CSS ĐỂ CHỈNH ẢNH CÁ NHÂN */
+      .profile-image img {
+          width: 220px; /* Chiều rộng ảnh */
+          height: 220px; /* Chiều cao ảnh  */
+          border-radius: 50%; /* Làm ảnh thành hình vuông */
+          object-fit: cover; /* Giúp ảnh không bị méo khi co giãn */
+          border: 5px solid #ffb6c1; /* Viền ảnh màu hồng */
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Đổ bóng nhẹ cho ảnh */
+      }
+      .profile-info {
+          flex: 2;
+          min-width: 300px;
+      }
+      .profile-info h3 {
+          color: #d81b60;
+          margin-top: 0;
+      }
+      .info-item {
+          margin-bottom: 12px;
+          font-size: 1.1em;
+      }
+      .info-label {
+          font-weight: bold;
+          color: #d81b60;
+          width: 100px;
+          display: inline-block;
+      }
+      .interests, .messages {
+          margin-top: 25px;
+          padding: 20px;
+          background-color: #fff9fb;
+          border-radius: 15px;
+      }
+      .interests h3, .messages h3 {
+          color: #d81b60;
+          margin-top: 0;
+      }
+      .back-home {
+          display: block;
+          text-align: center;
+          margin-top: 30px;
+          text-decoration: none;
+          color: #d81b60;
+          font-weight: bold;
+      }
+      .back-home:hover {
+          text-decoration: underline;
+      }
+      .tag-future {
+          display: inline-block;
+          background: #ffecf2;
+          color: #d81b60;
+          padding: 5px 15px;
+          border-radius: 20px;
+          font-size: 0.9em;
+          margin-top: 15px;
+          font-weight: bold;
+      }
+  </style>
+</head>
+<body>
+
+<div class="profile-container">
+  <div class="header-profile">
+    <h1>HỒ SƠ CÁ NHÂN</h1>
+    <p>Lớp 12D | Trường THPT Hưng Yên</p>
+  </div>
+
+  <div class="profile-main">
+    <div class="profile-image">
+      <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672686199_1493093359102659_263042211941593262_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeEFUBJSSFlGJwI13LdiHpzF_DsmvBNo4YD8Oya8E2jhgMBOLNa00z3ygpzgeWxOxEbNPFfwgI3-nWLtMzsivgfv&_nc_ohc=saKaorVvI5UQ7kNvwFB0FgO&_nc_oc=AdoeQ0IWaKTkgw0RKobBa2GNa-L97AhUmCQHDSNGyCAsiXbbT0k7HbgkWsR_V72142E&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=nHGC-mA3vTRLzYQrBlidLg&_nc_ss=7a3a8&oh=00_Af2uuiDRE29dWCoVjIeAQ5Ln7SXRZe5sD4JyelwzSd6VBg&oe=69EAB8CF" alt="Phạm Thu Trang">
+
+      <div class=+"profile-info">
+        <h3>Thông tin bản thân</h3>
+        <div class="info-item">
+          <span class="info-label">Họ tên:</span> Phạm Thu Trang
+        </div>
+        <div class="info-item">
+          <span class="info-label">Ngày sinh:</span> 16-02-2008
+        </div>
+        <div class="info-item">
+          <span class="info-label">Quê quán:</span> Phố Hiến, Hưng Yên
+        </div>
+        <div class="info-item">
+          <span class="info-label">Giới thiệu:</span>
+          Mình là một học sinh lớp 12D với ước mơ trở thành một giáo viên tiểu học. Mình tin rằng sự kiên nhẫn và tình yêu trẻ nhỏ, kết hợp với công nghệ sẽ tạo nên những tiết học thú vị.
+        </div>
+      </div>
+    </div>
+
+    <div class="interests">
+      <h3>Sở thích cá nhân</h3>
+      <ul>
+        <li><strong>Giảng dạy:</strong> Thích truyền đạt kiến thức và làm việc với các em nhỏ.</li>
+        <li><strong>Sáng tạo nội dung:</strong> Sử dụng kỹ năng chỉnh sửa ảnh và AI để thiết kế các bài giảng trực quan, sinh động.</li>
+        <li><strong>Nhiếp ảnh:</strong> Lưu giữ những khoảnh khắc đẹp của bạn bè và mái trường THPT Hưng Yên.</li>
+      </ul>
+    </div>
+
+    <div class="messages">
+      <h3>Lời nhắn gửi tới lớp 12D</h3>
+      <p>Gửi tập thể lớp 12D thân thương và các Thầy Cô giáo! Những ngày cuối cấp này thật trân quý.Em cảm ơn Thầy-Cô đã luôn dìu dắt và nâng đỡ chúng em đến bến bờ tri thức. Dưới mái trường THPT Hưng Yên em được bao bọc, dìu dắt bằng sự tận tụy và tâm huyết của Thầy-Cô.Cảm ơn tập thể lớp 12D vì các cậu đã là một phần thanh xuân của tớ. Sau tất cả những niềm vui, nỗi buồn, những thăng trầm của một thanh xuân đáng nhớ khó thể xóa nhòa. Tớ hy vọng chúng ta luôn thành công, hạnh phúc, chạm tới vinh quang. Hy vọng chúng ta khi gặp lại sẽ thật thành công và hạnh phúc!
+        <a href="lop12d.html" class="back-home">← Quay lại Trang Chủ của Lớp</a>
+    </div>
+
+</body>
+</html>
