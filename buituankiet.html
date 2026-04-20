@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROFILE TUAN KIET</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background: 
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("https://scontent.fhan3-3.fna.fbcdn.net/v/t39.30808-6/550217848_672369099233791_4239541391141026060_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=53a332&_nc_ohc=3sxI0e3mJ40Q7kNvwEln-9v&_nc_oc=Adp--_3xWXQfqUUY_FPI2AnkHzlHqwcsBFb5fGJfBnGayCzxiLdO__9-jl8kV5wLTeY&_nc_zt=23&_nc_ht=scontent.fhan3-3.fna&_nc_gid=1AlYe2_XcqRzkPCC34h-SQ&_nc_ss=7a3a8&oh=00_Af2fH76unVV5wcMqK5JKeyQAMe3_SONkbIxwbMMtAR6_xw&oe=69E98C41");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  color:white;
+  overflow-x:hidden;
+  transition:0.5s;
+}
+
+/* HOME BUTTON */
+.home-btn{
+  position:fixed;
+  top:20px;
+  left:20px;
+  padding:10px 15px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#00f2fe,#4facfe);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:9999;
+  box-shadow:0 0 15px #00f2fe;
+  transition:0.3s;
+}
+.home-btn:hover{
+  transform:scale(1.1);
+}
+
+/* PARTICLES */
+#particles{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+/* GLASS */
+.glass{
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.2);
+}
+
+/* HEADER */
+.cover{
+  height:250px;
+  position:relative;
+}
+
+.avatar{
+  position:absolute;
+  bottom:-60px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.avatar img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:4px solid white;
+  box-shadow:0 0 30px #ff4b91;
+  animation:float 3s infinite;
+}
+
+/* PROFILE */
+.profile{
+  text-align:center;
+  margin-top:80px;
+}
+
+.profile h1{
+  font-size:30px;
+}
+
+.btn{
+  margin-top:15px;
+  padding:10px 25px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#ff4b91,#ff00cc);
+  color:white;
+  cursor:pointer;
+}
+
+.btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 20px #ff4b91;
+}
+
+/* CONTAINER */
+.container{
+  max-width:900px;
+  margin:40px auto;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  padding:25px;
+  margin-bottom:20px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 0 30px rgba(255,0,150,0.5);
+}
+
+h2{
+  margin-bottom:15px;
+  color:#ff4b91;
+}
+
+/* SKILL */
+.bar{
+  height:8px;
+  background:#333;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.fill{
+  height:100%;
+  background:linear-gradient(90deg,#ff4b91,#00f2fe);
+}
+
+/* DARK MODE BUTTON */
+.toggle{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:#fff;
+  color:#000;
+  padding:12px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:9999;
+  box-shadow:0 0 15px #ff4b91;
+}
+
+.toggle:hover{
+  transform:scale(1.1);
+}
+
+/* MUSIC */
+.music{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+}
+
+.music button{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  border:none;
+  background:linear-gradient(45deg,#ff4b91,#764ba2);
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* ANIMATION */
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<button class="home-btn" onclick="goHome()">🏠 HOME</button>
+<canvas id="particles"></canvas>
+<div class="toggle" onclick="toggleMode()">🌙</div>
+
+<div class="cover">
+  <div class="avatar">
+    <img src="https://scontent.fhan4-5.fna.fbcdn.net/v/t39.30808-1/596813777_739405155863518_2341824681048618620_n.jpg?stp=c273.0.1365.1365a_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=e99d92&_nc_ohc=OMdsqbRYoyMQ7kNvwG8Wvhs&_nc_oc=AdoBG4v0CQItkcKnEbKojYC4B5ewfTsk0uKgRJTzIC-Le3eEsfnm73UdQVUwBTHfXI0&_nc_zt=24&_nc_ht=scontent.fhan4-5.fna&_nc_gid=qGeq5jLXvqvlQ987H4vpzQ&_nc_ss=7a3a8&oh=00_Af1rJ-7W9nlpFfaRcPMAuYGHrU7gUXrtIHvnM6V3J35zmA&oe=69E970EB">
+  </div>
+</div>
+
+<div class="profile">
+  <h1>Bùi Tuấn Kiệt</h1>
+  <p>Bóng rổ | Đẹp trai | Lập trình</p>
+  <button class="btn" onclick="openTikTok()">Follow</button>
+</div>
+
+<div class="container">
+
+  <div class="card glass">
+    <h2>📌 Giới thiệu</h2>
+    <p>Họ và tên: Bùi Tuấn Kiệt</p>
+    <br>
+    <p>Ngày sinh: 01/07/2008</p>
+    <br>
+    <p>Quê quán: Phường Phố Hiến - Hưng Yên</p>
+    <br>
+    <p>Tôi là Bùi Tuấn Kiệt, học sinh lớp 12D với niềm đam mê mạnh mẽ dành cho công nghệ và lập trình. Tôi luôn tìm cách nâng cấp kỹ năng của mình qua việc xây dựng các dự án web sáng tạo, hướng đến giao diện hiện đại và trải nghiệm người dùng tối ưu.</p>
+  </div>
+
+  <div class="card glass">
+    <h2>🎯 Sở thích</h2>
+
+    BÓNG RỔ
+    <div class="bar"><div class="fill" style="width:95%"></div></div>
+
+    LẬP TRÌNH
+    <div class="bar"><div class="fill" style="width:85%"></div></div>
+
+    GAME
+    <div class="bar"><div class="fill" style="width:80%"></div></div>
+
+  </div>
+  
+  <div class="card glass">
+    <h2>💌 Lời nhắn nhủ</h2>
+	
+    “Ba năm cấp 3 trôi qua nhanh hơn mình tưởng. Từ những ngày còn bỡ ngỡ bước vào lớp, đến lúc này ai cũng đã có cho mình những kỷ niệm riêng. Cảm ơn tất cả mọi người vì đã cùng nhau cười, cùng nhau cố gắng và cả những lúc “quậy phá” không thể quên.
+    <br>
+
+Sau này mỗi người một con đường, có thể không còn gặp nhau thường xuyên, nhưng mong rằng khi nhớ lại, chúng ta vẫn mỉm cười vì đã từng là một phần thanh xuân của nhau.
+	<br>
+
+Chúc tất cả sẽ thành công trên con đường mình chọn. Lớp 12D mãi đỉnh ❤️"
+<p style="text-align: right; width: 100%;">
+  —Bùi Tuấn Kiệt—
+</p>
+	</div>
+</div>
+
+<div class="music">
+  <button onclick="toggleMusic()">🎵</button>
+</div>
+
+<div id="yt-player" style="display:none;"></div>
+
+<script>
+// HOME
+function goHome(){
+  window.location.href="lop12d.html";
+}
+
+// FIX DARK MODE
+let dark=false;
+function toggleMode(){
+  let btn=document.querySelector(".toggle");
+
+  if(!dark){
+    document.body.style.filter="brightness(0.6)";
+    btn.innerHTML="☀️";
+    dark=true;
+  }else{
+    document.body.style.filter="brightness(1)";
+    btn.innerHTML="🌙";
+    dark=false;
+  }
+}
+
+// PARTICLES
+let canvas=document.getElementById("particles");
+let ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+for(let i=0;i<80;i++){
+  particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*3,d:Math.random()*1});
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="white";
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+  });
+  particles.forEach(p=>{
+    p.y+=p.d;
+    if(p.y>canvas.height) p.y=0;
+  });
+}
+setInterval(draw,30);
+
+// MUSIC
+let player,isPlaying=false;
+var tag=document.createElement('script');
+tag.src="https://www.youtube.com/iframe_api";
+document.body.appendChild(tag);
+
+function onYouTubeIframeAPIReady(){
+  player=new YT.Player('yt-player',{
+    height:'0',width:'0',
+    videoId:'CgZbE_EhTaM',
+    playerVars:{loop:1,playlist:'CgZbE_EhTaM'}
+  });
+}
+
+function openTikTok(){
+  window.open("https://www.tiktok.com/@tuankiet_0107?lang=vi-VN","_blank");
+}
+function toggleMusic(){
+  if(player){
+    if(isPlaying){player.pauseVideo();isPlaying=false;}
+    else{player.playVideo();isPlaying=true;}
+  }
+}
+</script>
+
+</body>
+</html>
