@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Vũ Long Hiếu</title>
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      body {
+          font-family: 'Inter', 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+          line-height: 1.5;
+          color: #eef2ff;
+      }
+      body {
+          background-image: url('https://vmstyle.vn/wp-content/uploads/2025/11/hinh-nen-mat-trang-hoat-hinh-tren-nen-vu-tru-tong-hong-pastel.jpg');
+          background-size: cover;
+          background-position: center center;
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          position: relative;
+      }
+      body::before {
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, rgba(10, 15, 28, 0.65), rgba(5, 8, 18, 0.7));
+          backdrop-filter: blur(2px);
+          z-index: -1;
+      }
+      nav {
+          background: rgba(0, 0, 0, 0.65);
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(66, 153, 225, 0.3);
+          padding: 1rem 2.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 1rem;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+      }
+      .logo {
+          font-size: 1.4rem;
+          font-weight: 700;
+          background: linear-gradient(135deg, #60a5fa, #a78bfa);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          letter-spacing: -0.3px;
+      }
+      .nav-links {
+          display: flex;
+          gap: 1.8rem;
+      }
+      .nav-links a {
+          color: #cbd5e1;
+          text-decoration: none;
+          font-weight: 500;
+          transition: 0.2s;
+          font-size: 0.95rem;
+      }
+      .nav-links a:hover {
+          color: #60a5fa;
+          text-shadow: 0 0 5px rgba(96, 165, 250, 0.3);
+      }
+      .hero {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 3rem 1.5rem 2rem;
+      }
+      .avatar {
+          width: 160px;
+          height: 160px;
+          border-radius: 50%;
+          border: 3px solid #3b82f6;
+          box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5), 0 0 0 6px rgba(59,130,246,0.2);
+          object-fit: cover;
+          background: #1e293b;
+          transition: transform 0.3s ease;
+      }
+      .avatar:hover {
+          transform: scale(1.02);
+      }
+
+      .hero h1 {
+          font-size: 2.5rem;
+          font-weight: 700;
+          margin-top: 1.2rem;
+          background: linear-gradient(to right, #e2e8f0, #94a3b8);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+      }
+
+      .hero-tag {
+          color: #60a5fa;
+          font-weight: 500;
+          letter-spacing: 1px;
+          margin-top: 0.3rem;
+          background: rgba(59,130,246,0.15);
+          padding: 0.3rem 1.2rem;
+          border-radius: 40px;
+          font-size: 0.9rem;
+          display: inline-block;
+      }
+
+      .container {
+          max-width: 1100px;
+          margin: 2rem auto 3rem;
+          padding: 0 1.5rem;
+      }
+
+      .card {
+          background: rgba(18, 25, 45, 0.75);
+          backdrop-filter: blur(8px);
+          border-radius: 28px;
+          padding: 1.8rem 2rem;
+          margin-bottom: 2rem;
+          border: 1px solid rgba(59, 130, 246, 0.25);
+          transition: transform 0.2s ease, box-shadow 0.2s;
+          box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.3);
+      }
+
+      .card:hover {
+          transform: translateY(-4px);
+          border-color: rgba(59, 130, 246, 0.5);
+          box-shadow: 0 25px 35px -14px rgba(0, 0, 0, 0.4);
+      }
+
+      .card-title {
+          font-size: 1.7rem;
+          font-weight: 700;
+          margin-bottom: 1.2rem;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          border-left: 4px solid #3b82f6;
+          padding-left: 1rem;
+          color: #f1f5f9;
+      }
+
+      .info-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          margin: 1rem 0;
+      }
+
+      .info-chip {
+          background: rgba(59, 130, 246, 0.2);
+          border: 1px solid rgba(59, 130, 246, 0.4);
+          padding: 0.5rem 1.2rem;
+          border-radius: 40px;
+          font-size: 0.95rem;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          color: #cbd5e6;
+      }
+
+      .intro-text {
+          background: rgba(0, 0, 0, 0.35);
+          padding: 1.2rem;
+          border-radius: 20px;
+          margin-top: 1rem;
+          border-left: 3px solid #3b82f6;
+          font-size: 1rem;
+          line-height: 1.6;
+      }
+
+      .hobby-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-top: 0.5rem;
+      }
+
+      .hobby-badge {
+          background: rgba(100, 116, 139, 0.3);
+          padding: 8px 18px;
+          border-radius: 40px;
+          font-weight: 500;
+          font-size: 0.9rem;
+          color: #e2e8f0;
+          transition: 0.2s;
+          border: 1px solid #334155;
+      }
+
+      .hobby-badge:hover {
+          background: #3b82f6;
+          color: white;
+          border-color: #3b82f6;
+      }
+
+      .message-block {
+          background: rgba(0, 0, 0, 0.45);
+          padding: 1.5rem;
+          border-radius: 24px;
+          font-size: 1.02rem;
+          line-height: 1.65;
+          color: #eef2ff;
+          border-right: 3px solid #3b82f6;
+      }
+
+      .sign {
+          margin-top: 1.2rem;
+          text-align: right;
+          font-weight: 600;
+          color: #90cdf4;
+      }
+
+      .btn-home {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: #3b82f6;
+          color: white;
+          padding: 0.9rem 2rem;
+          border-radius: 60px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: 0.2s;
+          box-shadow: 0 5px 12px rgba(59,130,246,0.3);
+      }
+
+      .btn-home:hover {
+          background: #2563eb;
+          transform: scale(1.02);
+          box-shadow: 0 8px 20px rgba(59,130,246,0.4);
+      }
+
+      footer {
+          text-align: center;
+          padding: 1.5rem;
+          border-top: 1px solid rgba(59,130,246,0.3);
+          font-size: 0.8rem;
+          color: #94a3b8;
+          background: rgba(0, 0, 0, 0.4);
+      }
+
+      .music-player {
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          z-index: 999;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 10px;
+      }
+
+      .volume-control {
+          background: rgba(0, 0, 0, 0.75);
+          backdrop-filter: blur(12px);
+          padding: 10px 16px;
+          border-radius: 40px;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+          border: 1px solid rgba(59, 130, 246, 0.5);
+          transition: all 0.2s ease;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(10px);
+      }
+
+      .volume-control.show {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+      }
+
+      .volume-control span {
+          color: white;
+          font-size: 1rem;
+          font-weight: 500;
+      }
+
+      .volume-slider {
+          width: 120px;
+          height: 4px;
+          -webkit-appearance: none;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 5px;
+          outline: none;
+          cursor: pointer;
+      }
+
+      .volume-slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #3b82f6;
+          cursor: pointer;
+          box-shadow: 0 0 5px #3b82f6;
+      }
+
+      .volume-slider::-webkit-slider-thumb:hover {
+          background: #60a5fa;
+          transform: scale(1.2);
+      }
+
+      .volume-value {
+          min-width: 45px;
+          font-size: 0.8rem;
+          color: #cbd5e6;
+      }
+
+      .music-toggle {
+          background: linear-gradient(135deg, #1e293b, #0f172a);
+          border: 1px solid #3b82f6;
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          cursor: pointer;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+          transition: all 0.2s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          backdrop-filter: blur(4px);
+      }
+
+      .music-toggle:hover {
+          transform: scale(1.05);
+          border-color: #60a5fa;
+          background: #3b82f6;
+      }
+
+      #musicIcon {
+          font-size: 28px;
+          color: white;
+      }
+
+      @media (max-width: 720px) {
+          nav {
+              padding: 1rem;
+          }
+          .hero h1 {
+              font-size: 1.8rem;
+          }
+          .card {
+              padding: 1.2rem;
+          }
+          .card-title {
+              font-size: 1.4rem;
+          }
+          .volume-slider {
+              width: 80px;
+          }
+          .music-player {
+              bottom: 16px;
+              right: 16px;
+          }
+      }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-links">
+    <a href="lop12d.html">🏠 Trang chủ</a>
+    <a href="https://www.facebook.com/hieu.vulong.1" target="_blank" rel="noopener noreferrer">📘 Liên hệ</a>
+  </div>
+</nav>
+<div class="hero">
+  <img class="avatar"
+       src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672669870_1491554049256590_103959089329994007_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHyEZ4kXt7cZEqUP32YJHtFI1CF_x2vadQjUIX_Ha9p1GOCtu15LAxH0c8iIl4wNUZUR0mNBan_7Y3O_fvuPdAM&_nc_ohc=NOFlQujZn2YQ7kNvwGRM_1b&_nc_oc=AdoeMMrZGKKbzd3iO6z8MnVh6JZ2UQ3d3lZrT9VPPyRwgLJC0ocbY6xzCVc7HRKdvA8&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=ZP5XuytfKYhk16SNj4u9uQ&_nc_ss=7a3a8&oh=00_Af003cQU4bjelhWUCmIECaPA-En_QIFOMe0l-_GKpLl4Hg&oe=69E9909B"
+       alt="Ảnh đại diện Long Hiếu"
+       onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=1e293b&color=60a5fa&bold=true&size=160&name=Long+Hiếu';">
+  <h1>Vũ Long Hiếu</h1>
+  <div class="hero-tag">⚡ Học sinh 12D| Đam mê Code & Đạp xe⚡</div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="card-title">
+      📌 Thông tin cá nhân
+    </div>
+    <div class="info-grid">
+      <span class="info-chip">📅 06/01/2008 </span>
+      <span class="info-chip">📍 Quê: Long Biên, Hà Nội</span>
+      <span class="info-chip">🎓 THPT Hưng Yên </span>
+    </div>
+    <div class="intro-text">
+      <strong>🌟 Vài nét về mình:</strong><br>
+      Mình là một chàng trai thích tìm tòi học hỏi về công nghệ, lập trình.Thích lang thang khám phá khắp nơi trên đôi chân của bản thân. Mình tin rằng "Thành công đến từ nỗ lực không ngừng nghỉ".
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      🎯 Sở thích & Đam mê
+    </div>
+    <div class="hobby-list">
+      <span class="hobby-badge">🚴 Xe đạp</span>
+      <span class="hobby-badge">💻 Lập trình Web & Game</span>
+      <span class="hobby-badge">🎧 Nghe nhạc EDM / Rap</span>
+      <span class="hobby-badge">🎮 Chơi game </span>
+      <span class="hobby-badge">📚 Học tiếng Trung</span>
+      <span class="hobby-badge">✈️ Du lịch bụi</span>
+    </div>
+    <p style="margin-top: 1.2rem; font-size: 0.9rem; color: #9ab3d5;">💬 “Mỗi sở thích là một phần tạo nên phiên bản tốt nhất của chính mình.”</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      💬 Lời nhắn gửi lớp 12D & thầy cô
+    </div>
+    <div class="message-block">
+      <p>“Gửi các thầy cô và những người anh em, bạn bè thân yêu của 12D,</p>
+      <p style="margin-top: 12px;">Ba năm cấp ba thực sự là hành trình tuyệt vời nhất. Cảm ơn thầy cô đã tận tâm dạy dỗ, không chỉ truyền đạt kiến thức mà còn dạy chúng em cách làm người. Cảm ơn các bạn đã cùng tôi trải qua những buổi học muộn, những trận cầu đầy kịch tính, những lần ôn thi căng thẳng và cả những tiếng cười vô tư lứa tuổi học trò.</p>
+      <p style="margin-top: 12px;">Dù sau này mỗi đứa một ngả, tôi tin rằng tình cảm lớp mình sẽ không bao giờ phai nhạt. Hãy luôn vững bước, sống hết mình với đam mê và đừng quên rằng chúng ta từng là một phần thanh xuân rực rỡ. Chúc thầy cô luôn mạnh khỏe, chúc các bạn thành công rực rỡ trên con đường phía trước!</p>
+      <div class="sign">
+        — Vũ Long Hiếu —
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 2rem 0 1rem;">
+    <a href="lop12d.html" class="btn-home">
+      🏠 Quay lại trang chủ lớp học
+    </a>
+    <p style="font-size: 0.75rem; margin-top: 12px; color:#8ba0bc;">※ Trang chủ tập thể - nơi lưu giữ kỷ niệm</p>
+  </div>
+</div>
+
+<footer>
+  © 2025 Design by Vũ Long Hiếu
+</footer>
+
+<div class="music-player">
+  <div class="volume-control" id="volumeControl">
+    <span>🔊</span>
+    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="40">
+    <span id="volumePercent" class="volume-value">40%</span>
+  </div>
+  <button id="musicToggleBtn" class="music-toggle">
+    <span id="musicIcon">🎵</span>
+  </button>
+</div>
+
+<div id="youtubePlayer" style="display: none;"></div>
+
+<script>
+  // Biến trạng thái nhạc
+  let isPlaying = false;
+  let player;
+  let currentVolume = 40;
+  let isPlayerReady = false;
+
+  const toggleBtn = document.getElementById('musicToggleBtn');
+  const musicIconSpan = document.getElementById('musicIcon');
+  const volumeControlDiv = document.getElementById('volumeControl');
+  const volumeSlider = document.getElementById('volumeSlider');
+  const volumePercentSpan = document.getElementById('volumePercent');
+
+  // Hiển thị thanh âm lượng khi hover vào nút nhạc
+  let hoverTimeout;
+  if (toggleBtn) {
+    toggleBtn.addEventListener('mouseenter', () => {
+      clearTimeout(hoverTimeout);
+      volumeControlDiv.classList.add('show');
+    });
+  }
+
+  const musicPlayerDiv = document.querySelector('.music-player');
+  musicPlayerDiv.addEventListener('mouseleave', () => {
+    hoverTimeout = setTimeout(() => {
+      volumeControlDiv.classList.remove('show');
+    }, 500);
+  });
+
+  volumeControlDiv.addEventListener('mouseenter', () => {
+    clearTimeout(hoverTimeout);
+  });
+
+  // Hàm tải YouTube API
+  function loadYouTubeAPI() {
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  }
+
+  // Khi API sẵn sàng, tạo player với bài hát "Nổi Gió Rồi - Châu Thâm (Piano Cover)"
+  // Video ID: YOSgRy3kqRs (từ link YouTube)
+  window.onYouTubeIframeAPIReady = function() {
+    player = new YT.Player('youtubePlayer', {
+      height: '0',
+      width: '0',
+      videoId: 'YOSgRy3kqRs',
+      playerVars: {
+        'autoplay': 0,
+        'loop': 1,
+        'playlist': 'YOSgRy3kqRs',
+        'controls': 0,
+        'disablekb': 1,
+        'modestbranding': 1
+      },
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  };
+
+  function onPlayerReady(event) {
+    isPlayerReady = true;
+    player.setVolume(currentVolume);
+    console.log("🎵 Nhạc nền 'Nổi Gió Rồi - Piano Cover' đã sẵn sàng! Âm lượng: " + currentVolume + "%");
+    // Không tự động phát để tránh lỗi trình duyệt, người dùng sẽ bật bằng nút
+  }
+
+  function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.ENDED) {
+      // Lặp lại bài hát
+      player.playVideo();
+    }
+    // Cập nhật icon theo trạng thái phát
+    if (event.data === YT.PlayerState.PLAYING) {
+      isPlaying = true;
+      musicIconSpan.textContent = '🎵';
+    } else if (event.data === YT.PlayerState.PAUSED) {
+      isPlaying = false;
+      musicIconSpan.textContent = '🎵';
+    }
+  }
+
+  // Điều chỉnh âm lượng
+  if (volumeSlider) {
+    volumeSlider.addEventListener('input', function() {
+      currentVolume = this.value;
+      if (player && isPlayerReady) {
+        player.setVolume(currentVolume);
+      }
+      volumePercentSpan.textContent = currentVolume + '%';
+
+      const volumeIcon = volumeControlDiv.querySelector('span:first-child');
+      if (currentVolume == 0) {
+        volumeIcon.textContent = '🔇';
+      } else if (currentVolume < 30) {
+        volumeIcon.textContent = '🔈';
+      } else if (currentVolume < 70) {
+        volumeIcon.textContent = '🔉';
+      } else {
+        volumeIcon.textContent = '🔊';
+      }
+    });
+  }
+
+  // Bật/tắt nhạc
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      if (player && isPlayerReady) {
+        if (isPlaying) {
+          player.pauseVideo();
+          musicIconSpan.textContent = '🎵';
+          isPlaying = false;
+        } else {
+          player.playVideo();
+          musicIconSpan.textContent = '🎵';
+          isPlaying = true;
+        }
+      } else {
+        // Nếu player chưa sẵn sàng, thử khởi tạo lại (fallback)
+        alert("🎵 Đang tải nhạc, vui lòng chờ vài giây rồi thử lại!");
+      }
+    });
+  }
+
+  loadYouTubeAPI();
+
+  console.log("Trang cá nhân - Ảnh nền cố định mặt trăng pastel, ảnh đại diện từ Facebook đã cập nhật.");
+</script>
+</body>
+</html>
