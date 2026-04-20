@@ -25,7 +25,6 @@ body{
   transition:0.5s;
 }
 
-/* HOME BUTTON */
 .home-btn{
   position:fixed;
   top:20px;
@@ -45,7 +44,6 @@ body{
   transform:scale(1.1);
 }
 
-/* PARTICLES */
 #particles{
   position:fixed;
   width:100%;
@@ -53,7 +51,6 @@ body{
   z-index:-1;
 }
 
-/* GLASS */
 .glass{
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(15px);
@@ -61,7 +58,6 @@ body{
   border:1px solid rgba(255,255,255,0.2);
 }
 
-/* HEADER */
 .cover{
   height:250px;
   position:relative;
@@ -83,7 +79,6 @@ body{
   animation:float 3s infinite;
 }
 
-/* PROFILE */
 .profile{
   text-align:center;
   margin-top:80px;
@@ -108,14 +103,12 @@ body{
   box-shadow:0 0 20px #ff4b91;
 }
 
-/* CONTAINER */
 .container{
   max-width:900px;
   margin:40px auto;
   padding:20px;
 }
 
-/* CARD */
 .card{
   padding:25px;
   margin-bottom:20px;
@@ -132,7 +125,6 @@ h2{
   color:#ff4b91;
 }
 
-/* SKILL */
 .bar{
   height:8px;
   background:#333;
@@ -145,7 +137,6 @@ h2{
   background:linear-gradient(90deg,#ff4b91,#00f2fe);
 }
 
-/* DARK MODE BUTTON */
 .toggle{
   position:fixed;
   top:20px;
@@ -163,7 +154,6 @@ h2{
   transform:scale(1.1);
 }
 
-/* MUSIC */
 .music{
   position:fixed;
   bottom:20px;
@@ -181,7 +171,6 @@ h2{
   cursor:pointer;
 }
 
-/* ANIMATION */
 @keyframes float{
   0%{transform:translateY(0)}
   50%{transform:translateY(-10px)}
@@ -258,12 +247,11 @@ Chúc tất cả sẽ thành công trên con đường mình chọn. Lớp 12D m
 <div id="yt-player" style="display:none;"></div>
 
 <script>
-// HOME
+	
 function goHome(){
-  window.location.href="lop12d.html";
+  window.location.href="index.html";
 }
 
-// FIX DARK MODE
 let dark=false;
 function toggleMode(){
   let btn=document.querySelector(".toggle");
@@ -279,7 +267,6 @@ function toggleMode(){
   }
 }
 
-// PARTICLES
 let canvas=document.getElementById("particles");
 let ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
@@ -305,7 +292,6 @@ function draw(){
 }
 setInterval(draw,30);
 
-// MUSIC
 let player,isPlaying=false;
 var tag=document.createElement('script');
 tag.src="https://www.youtube.com/iframe_api";
