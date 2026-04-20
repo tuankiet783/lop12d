@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lớp 12D</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --main:#ec4899;
+      --bg:#fff1f5;
+      --card:#ffffff;
+      --text:#831843;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    body{
+      font-family:Poppins;
+      background:url("https://scontent.fhan3-2.fna.fbcdn.net/v/t39.30808-6/598073591_739409142529786_9220281988056169365_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=2a1932&_nc_ohc=t13Hsa7SJSIQ7kNvwE3X572&_nc_oc=AdrfiGtHAbI3WacinMWZQTaPpQGWpOMojdR9B3ZEsbln6h0HsYM_zQTZ5O1guC3XtEs&_nc_zt=23&_nc_ht=scontent.fhan3-2.fna&_nc_gid=nSmP3VMKz3th37QbeYA7Nw&_nc_ss=7a3a8&oh=00_Af3GcvO1VAmX5qnx7lSCtj5yn-_WINvRX76mK6qLJxpvgQ&oe=69E9873B");
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+      color:var(--text);
+      position:relative;
+    }
+
+    /* overlay làm chữ dễ đọc hơn */
+    body::before{
+      content:"";
+      position:fixed;
+      top:0;left:0;
+      width:100%;height:100%;
+      background:rgba(255,255,255,0.65);
+      z-index:-1;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      background:#fbcfe8;
+      padding:15px;
+      text-align:center;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    header h1{color:#be185d;}
+
+    .topbar{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin:15px;
+    }
+
+    input{
+      padding:10px;
+      border-radius:10px;
+      border:1px solid #f9a8d4;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:20px;
+      padding:20px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.9);
+      padding:16px;
+      border-radius:20px;
+      text-align:center;
+      transition:.3s;
+      box-shadow:0 5px 15px rgba(236,72,153,0.2);
+      cursor:pointer;
+    }
+
+    .card:hover{
+      transform:translateY(-5px) scale(1.02);
+    }
+
+    .card img{
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid var(--main);
+    }
+
+    footer{
+      text-align:center;
+      padding:20px;
+      color:#be185d;
+    }
+
+    .comment-box{
+      max-width:500px;
+      margin:20px auto;
+      padding:15px;
+      background:rgba(255,255,255,0.9);
+      border-radius:15px;
+    }
+
+    textarea{
+      width:100%;
+      height:80px;
+      border-radius:10px;
+      border:1px solid #f9a8d4;
+      padding:10px;
+    }
+
+    button{
+      margin-top:10px;
+      padding:8px 12px;
+      border:none;
+      border-radius:10px;
+      background:var(--main);
+      color:white;
+    }
+
+    .comments p{
+      background:#ffe4e6;
+      margin:8px 0;
+      padding:8px;
+      border-radius:8px;
+    }
+    /* ===== SLIDER ===== */
+.slider{
+  overflow:hidden;
+  position:relative;
+  margin:30px;
+}
+
+.slides{
+  display:flex;
+  transition:0.5s;
+}
+
+.group{
+  min-width:100%;
+  display:flex;
+  gap:10px;
+}
+
+.group img{
+  width:33.33%;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* FIX NÚT */
+.slider button{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#ec4899;
+  color:white;
+  border:none;
+  padding:10px;
+  cursor:pointer;
+  z-index:999; /* QUAN TRỌNG */
+}
+
+.prev{left:10px;}
+.next{right:10px;}
+
+/* LIGHTBOX */
+#lightbox{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+#lightbox img{
+  max-width:90%;
+  border-radius:15px;
+}
+  </style>
+</head>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  let index = 0;
+  const slides = document.getElementById("slides");
+  const total = slides.children.length;
+
+  window.nextSlide = function(){
+    index = (index + 1) % total;
+    slides.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  window.prevSlide = function(){
+    index = (index - 1 + total) % total;
+    slides.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  window.openLightbox = function(img){
+    document.getElementById("lightbox").style.display="flex";
+    document.getElementById("light-img").src = img.src;
+  }
+
+  window.closeLightbox = function(){
+    document.getElementById("lightbox").style.display="none";
+  }
+
+});
+</script>
+<body>
+
+<header>
+  <h1>LỚP 12D</h1>
+</header>
+
+<div class="topbar">
+  <input type="text" id="searchBox" placeholder="Tìm học sinh..." onkeyup="searchName()">
+</div>
+
+<div class="grid" id="list">
+
+  <!-- Kiệt -->
+  <div class="card" onclick="window.location.href='buituankiet.html'">
+    <img src="https://scontent.fhan4-5.fna.fbcdn.net/v/t39.30808-1/596813777_739405155863518_2341824681048618620_n.jpg?stp=c273.0.1365.1365a_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=e99d92&_nc_ohc=RvgNXn6rXtAQ7kNvwGhnxQl&_nc_oc=AdpfC47y1Ksg7awxN5PZhh4DwvuJcNyGLj3-A8DXwI9n20-dGVUl_8OCDoHK2gR2qy4&_nc_zt=24&_nc_ht=scontent.fhan4-5.fna&_nc_gid=bBH2QhrifKvAtX0Vq1VGqw&_nc_ss=7a3a8&oh=00_Af3EaCFgja-AH2n41fMl4IhoCTaigNHy9n0xBBKKM9tX_A&oe=69E81F6B">
+    <h3>Bùi Tuấn Kiệt</h3>
+  </div>
+
+  <!-- Hiếu -->
+  <div class="card" onclick="window.location.href='vulonghieu.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672669870_1491554049256590_103959089329994007_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHyEZ4kXt7cZEqUP32YJHtFI1CF_x2vadQjUIX_Ha9p1GOCtu15LAxH0c8iIl4wNUZUR0mNBan_7Y3O_fvuPdAM&_nc_ohc=nbvHWbUVB8IQ7kNvwHHTiGD&_nc_oc=AdpoB5qK2-_1tGGYc25UMmD6ZVFVvlg_HMyCc6L_CNj7uwKy8FYGTWP5jhxnsXqeUso&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=BB_XhGORomgLW3jbh_fOjg&_nc_ss=7a3a8&oh=00_Af3hKqskB89o792LU6XmXd5Q7jHeMjedpmLkhtdbLFQ6FQ&oe=69E806DB""https://via.placeholder.com/100">
+    <h3>Vũ Long Hiếu</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='dothuyduong.html'">
+    <img src="https://scontent.fhan4-5.fna.fbcdn.net/v/t39.30808-6/674689163_845548268582539_1247459324538346861_n.jpg?stp=cp6_dst-jpg_p526x296_tt6&_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_ohc=YwMbSf839IYQ7kNvwFvFaPQ&_nc_oc=AdrSc6MYqp1CAxa0UVFhkQrSJI06oJRbdh8TCMJsWVJUVqujKzbnjeoDl-2oi0ahWAM&_nc_zt=23&_nc_ht=scontent.fhan4-5.fna&_nc_gid=qFut-Q9D85PQFpJJrqeMsg&_nc_ss=7a3a8&oh=00_Af1GyeBbYpZ_yesRHHgTflXJiyF9SzLE_qxWC_GsVEIDBg&oe=69EBEB6E">
+    <h3>Đỗ Thùy Dương</h3>
+  </div>
+  <div class="card" onclick="window.location.href='tranthanhcong.html'">
+    <img src="https://scontent.fhan3-4.fna.fbcdn.net/v/t39.30808-6/673732478_845550225249010_1090998771686407741_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=13d280&_nc_ohc=h5ZaB9XIkncQ7kNvwEBm4aX&_nc_oc=Adp_JeD39kMqjgFeU5j0mxkoBik7c3czj9zyAnYGF7--sEeNMAa6nyg-NfdlYWiAXv0&_nc_zt=23&_nc_ht=scontent.fhan3-4.fna&_nc_gid=GcrJSUC6Nak_MfzRwqLY_A&_nc_ss=7a3a8&oh=00_Af01a_dfC7jmPpvdkdRDJn0GrzQ1yuE5MJrjU0DGu862zw&oe=69EC064A">
+    <h3>Trần Thành Công</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='vumanhcuong.html'">
+    <img src="https://scontent.fhan4-3.fna.fbcdn.net/v/t39.30808-6/674852407_845549155249117_7401459923286703384_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=13d280&_nc_ohc=vlzZ0cAzS1YQ7kNvwEaVx0D&_nc_oc=AdpBwXo9-6s8zwORxAwz_As_M_GLzYcO2f5BaS7NTxF47ycW2u0pe4jGUcDsgQBnNi8&_nc_zt=23&_nc_ht=scontent.fhan4-3.fna&_nc_gid=UlUmLxPclN7as-EMERYPiA&_nc_ss=7a3a8&oh=00_Af3VHjqUXy8NmDBt9QyEeUwfTgNsQ__P2sDE3dPPSZu_ZA&oe=69EBFB91">
+    <h3>Vũ Mạnh Cường</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='lamhaiyen.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672684788_1492394939172501_1961813674633219778_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGnTuV--LGqNJnEMhH5A-ktEafe22EMk-8Rp97bYQyT74WNAblX_r4yZCbmq9IQETDMe_cKqAaCy0XHcSvLTm3m&_nc_ohc=7HOHouOIe7cQ7kNvwFXO--v&_nc_oc=AdpjNaWgNoY7M8jhMmAQpwkRBo0haBYYMG9L6rlwTneSn_cFxL0JLSHtCsR6BHG_3hI&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=71xEnzPjQNxcFKnpA4CM9g&_nc_ss=7a3a8&oh=00_Af3VFqSWeojsLId3GWnQhcCXuo4W-PHrHxgUJ_1u6sVwpw&oe=69E985EA">
+    <h3>Lâm Hải Yến</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='laminhanh.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/673188611_1493042515774410_4758177596809450949_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeEh-3l2qPevVMKbWiB0NeUzYFD9WQm2yQ9gUP1ZCbbJDwHkQW0UNVB_XwYBt0wgzyz1a-2Nl25WB9NHsFwaPAqu&_nc_ohc=6JbQhGe6fv4Q7kNvwGzsCao&_nc_oc=AdpU0Z_yWIG9LdS7F5pqwMfpJpvCNfFOuH44ym2nFOUL3L34oQB_WyarrkDP2CFKYKg&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=EF2BwEdhBL7ElngVRhxzgw&_nc_ss=7a3a8&oh=00_Af1bERN-a_L71UuMdXzzdNSkVj6XD1nSC8Iet8Ff1f4ttQ&oe=69EAB91A" alt="Ảnh của Lã Minh Anh" class="avatar">
+    <h3>Lã Minh Anh</h3>
+  </div>
+  <div class="card" onclick="window.location.href='tranbaotram.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672685745_1493030889108906_255482407280879651_n.jpg?stp=cp6_dst-jpg_p526x296_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeELNbNeIarqJfGxulITIOLIsvA3Cb195hyy8DcJvX3mHFN2-K1pww3_RGzv0LIosPL2QfwaetKGliwywBcd1CkT&_nc_ohc=ECHCg8DpCrwQ7kNvwEUhUfH&_nc_oc=AdqI3XbEu56lFLJUSRn2AXl-Z8Q_UnxkuJdDnVsAc4n0wmKGY3bHRfrEnk7A2yq40wI&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=OKoN14ORcKklrViARwhwKQ&_nc_ss=7a3a8&oh=00_Af3zI_Xe99L9Xe_lvKe7_fPnImqGsrvOUeBgYq3e70OZ4Q&oe=69EA98C9">
+    <h3>Trần Bảo Trâm</h3>
+  </div>
+  <div class="card" onclick="window.location.href='dohailong.html'">
+    <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/673685131_1493042552441073_2302900567795701874_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeEmN_EEhn8Foho0Smu7gqraSnGi46C1PCZKcaLjoLU8Jjo5z5SQj9ZiNQk1oFZH_WyMTrU-0qYLny6Fo1bLLfG9&_nc_ohc=Up83Rojk9XIQ7kNvwGfH5fH&_nc_oc=Adowt1gIjxUZKbW2F6GU4l7gx-J_sfiW1UAGtNzaiAaBI1Jp3_1B5V0strUknnz6YH0&_nc_zt=23&_nc_ht=scontent.fhan15-1.fna&_nc_gid=HqY8bnzMiN5RhCQF_OA4aA&_nc_ss=7a3a8&oh=00_Af1tl3rquS1atq1lx54uQEw4ge8FA6mWZX00H4d2KT9vFA&oe=69EA9CFF" alt="Đỗ Hải Long" class="profile-img">
+    <h3>Đỗ Hải Long</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='vugiahuy.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672682319_1493045235774138_1961355929798639705_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHyIBKRy4veZUjzebzRk1wwd-k_DE-EP8J36T8MT4Q_wqBKkdNTIw6AsjLGUig6FeVCyjCq97EWhmLfeOVBLOjD&_nc_ohc=YzEQE_-yFXQQ7kNvwEkTv22&_nc_oc=Ado1H2FfBOuJgpEtrHGGUFoTDd7yFSgtNGwNTqtr7jwTo5z29g1KSqLtiaYJAg-rhi0&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=9Cpon0c0PyryFa3o5kJIew&_nc_ss=7a3a8&oh=00_Af1jP3Q1GiDLVFBuTUv27xcwSZKYikdsFSUIOaJT7X6VAg&oe=69EAC1DA">
+    <h3>Vũ Gia Huy</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='nguyenhuyhoang.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672684663_1493045299107465_329549587237826916_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGZzdlAft1p2vVdigX18CYsv7Z55rkWfO6_tnnmuRZ87q_3wOlFbl91_W8NgRrNjtJT5_Qg1x0yEn1lYeHSTbDP&_nc_ohc=M5sP097LCKYQ7kNvwH1Ywbs&_nc_oc=Adqj3uezcEi5yp6rZMfoxlRBJ0Bwz3dr6XfGmf2zcFFu7ChrRqoR-lEWwKnQynOJbE0&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=A_mbotbvmfzTovRjen8Liw&_nc_ss=7a3a8&oh=00_Af3OWNbrYAZ4wescPwz4UF33m-OSIKqsEqWt5af2AVSRRg&oe=69EAA735" alt="Ảnh cá nhân" class="avatar">
+    <h3>Nguyễn Huy Hoàng</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='phamtiendat.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/676477477_1493045372440791_6321330396788493124_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHin1o0O04ago2Ho3tPk-06cKlsNS2KPShwqWw1LYo9KCb3tDraIj57_ceNLv5DROP9W-seLyD3bGNRofFTxTIp&_nc_ohc=gNbGalu4DJ4Q7kNvwElRPYf&_nc_oc=AdoavbG_70mWPYKma_TDitDdEE6Gamuxba-dSyU_bf3e_515eKGlphTVjPiJduQ_RjQ&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=LsAWJxXnDbcXAilOtft1kQ&_nc_ss=7a3a8&oh=00_Af3QOaTji1CkBSVylH8YCwFLIfnoQe2ySP89FdXYHCQGOQ&oe=69EA9E3C" alt="Ảnh cá nhân" class="avatar">
+    <h3>Phạm Tiến Đạt</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='taquangminh.html'">
+    <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/673559754_1493072635771398_5313648019585146818_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGpy0MAX3lkyoh81ajI7Pz-cr9hbK11niJyv2FsrXWeIiZB-ExAz3RXX7Hr_NhdAVf9J82a-U3Ki4b3zHVt2pbD&_nc_ohc=-jtTv0_nDmgQ7kNvwHV36r3&_nc_oc=AdqNN-YSdhgO0G4U2XlzEpJw1QMjROJse-8iWUVQMeIxOSU2DE9WAdVWCS0AA2QYkKQ&_nc_zt=23&_nc_ht=scontent.fhan15-1.fna&_nc_gid=UgRH2UPvwJ6cQS2BiLcCQw&_nc_ss=7a3a8&oh=00_Af1jk3TvbuAZQBJK7cyk8PCV7H3n4LO13h-bMYmcW83Aug&oe=69EAD58F" alt="Ảnh cá nhân" class="avatar">
+    <h3>Tạ Quang Minh</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='letuananh.html'">
+    <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/676552500_1493072692438059_1631601601855979094_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGWJYv1zf7vPYnJiLW4-8BBkAYkSTylqJaQBiRJPKWolkrcRKECNbFy77QenLwvioNTz6hgQBk27YDqsq-zu6QZ&_nc_ohc=PTTCnw1Zdw0Q7kNvwHxgewn&_nc_oc=AdpaK6VRPBcM6yWtE2DQA-H2b3UJM4bS6AOohuYFUWmOr0k8Zri5CDGdRM7wPQ5cUuk&_nc_zt=23&_nc_ht=scontent.fhan15-1.fna&_nc_gid=_dFvfY84YsZhrwZTE_yJxg&_nc_ss=7a3a8&oh=00_Af150hVbj0nq9vPUX8C500zTEot6p0DALniOdDLGu2GSZA&oe=69EAA271" alt="Ảnh của Tuấn Anh" class="profile-img">
+    <h3>Lê Tuấn Anh</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='nguyenhungnam.html'">
+    <img src="">
+    <h3>Nguyễn Hùng Nam</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='dominhhieu.html'">
+    <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/672681415_1493072782438050_5154384175709111476_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGKXIHOEi6S8gt1TTZZ85frvm7uZLcCDgq-bu5ktwIOCmwUQt0HoD117pqxfup8gLmIah3wrcxtRxH544WreTM4&_nc_ohc=Te-K2K49T_QQ7kNvwHEigLV&_nc_oc=AdpH8A7cDNPwKC7KyQs2ihz3-nmAZeMUKG6HBPeopdqVmBy_OL4HMdGBM3kFT3aEey4&_nc_zt=23&_nc_ht=scontent.fhan15-1.fna&_nc_gid=x_lGLpX31TBIHgsfMLpL2A&_nc_ss=7a3a8&oh=00_Af2Qf0sqSlM14VWOzSZKY3UeyN5CPWgphjrWWaJc9947OQ&oe=69EADB48" alt="Ảnh cá nhân của Đỗ Minh Hiếu">
+    <h3>Đỗ Minh Hiếu</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='nguyenhuuthien.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/676963529_1493093245769337_5494627820508142576_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGPlkPMbuSZA-bbzjQZYJlr1MRT488xzd_UxFPjzzHN37ZLY0CmEjVtt4bSX39kXx0NtRYDbqAIkDE0FJr97wFI&_nc_ohc=MAgGl59zIKIQ7kNvwGIcQ_P&_nc_oc=AdqGRYURxl0dkj-uuWrUGZWI4M7c7ONw0Pxc-aF4427eqO40xspfr-zjWU69Qhm_Xmc&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=7FgqyHECwrCI7ifzrdgpaQ&_nc_ss=7a3a8&oh=00_Af0EoylQOpmp4Dvnp33vA5O6puNHUK7mpvRd727rbEYrNA&oe=69EACC71" alt="Ảnh cá nhân" class="avatar">
+    <h3>Nguyễn Hữu Thiện</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='phamthutrang.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672686199_1493093359102659_263042211941593262_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeEFUBJSSFlGJwI13LdiHpzF_DsmvBNo4YD8Oya8E2jhgMBOLNa00z3ygpzgeWxOxEbNPFfwgI3-nWLtMzsivgfv&_nc_ohc=saKaorVvI5UQ7kNvwFB0FgO&_nc_oc=AdoeQ0IWaKTkgw0RKobBa2GNa-L97AhUmCQHDSNGyCAsiXbbT0k7HbgkWsR_V72142E&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=nHGC-mA3vTRLzYQrBlidLg&_nc_ss=7a3a8&oh=00_Af2uuiDRE29dWCoVjIeAQ5Ln7SXRZe5sD4JyelwzSd6VBg&oe=69EAB8CF" alt="Phạm Thu Trang">
+    <h3>Phạm Thu Trang</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='phamthutrang.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/675410262_1493105709101424_6283423025255248290_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeE599gZhkcNAVgwn7aZS6gB26GBx77AUx7boYHHvsBTHm3jOKUUM8PoMCIeHb8atsp-Dv7cNZMc6RxX7cNEsUGg&_nc_ohc=hkKeck25USoQ7kNvwHx_xTp&_nc_oc=Adr7fmmO1DSv3sumlDi0_X5Le8CUMHxvyRbT6irrLse3HPpp-zQy4A-9ptPw3ZNV8B8&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=o6mXepKQcMmT7MI4S9I_mw&_nc_ss=7a3a8&oh=00_Af1umbJTi5vc0ti5fRCxLKkz5eFwdSTCnUEWHo3nqGsEYA&oe=69EAD4E8" alt="Phí Hoàng Anh" class="profile-img">
+    <h3>Phí Hoàng Anh</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='phamdieuhuong.html'">
+    <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/674217370_1493105762434752_9094081905943367888_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeFbXDe4KgGpLnGjdqEqjbdu_vpKD-gBt2T--koP6AG3ZNl4AKLznk3N5y3GCUdP5Nbwv15iwXScTWXw3_1A61Hi&_nc_ohc=WmEQ4UXQA4cQ7kNvwFcws55&_nc_oc=Adqa_7Jq6-maMoVDpODgVa6d_jjCWndLmLDkMw1ptv4bZLZOzbLTiEAortWS_U0bgk0&_nc_zt=23&_nc_ht=scontent.fhan15-1.fna&_nc_gid=JVyvrQ05bm97T2nooXLwQQ&_nc_ss=7a3a8&oh=00_Af3FZwHYGUgNw8PNLsb1AjWxqrqTjhst6J1W5zL105jQxw&oe=69EAB6D0" alt="Ảnh cá nhân" class="avatar">
+    <h3>Phạm Diệu Hương</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='vunhatduy.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/676868875_1493105832434745_7621711567861992716_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeEFSNwTxiQYQjIqE2ZP-rqjZ9foTYW_jyJn1-hNhb-PIkDshJZIFnROzXRgvLQEvz6C7beXFaensBeaTACsXJUz&_nc_ohc=wjHcEqkhmikQ7kNvwHhib9O&_nc_oc=AdpJ5ozmzDAG5RKDECrvyVnv8Rlpo_cqUA-jafhOEDtzjrQnwn-HQhLbYx9Sbk9QkiU&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=eHZrWn_TR_Bjgf7K9XQdiw&_nc_ss=7a3a8&oh=00_Af19Nc_R18Aoz3ozWAbCjkX5oKN5fgtrDl2Alq9HiucwZA&oe=69EADB03" alt="Ảnh cá nhân">
+    <h3>Vũ Nhật Duy</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='trankiencuong.html'">
+    <img src="">
+    <h3>Trần Kiên Cường</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='buithidieuchi.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672690367_1493106045768057_520691598794585396_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHPPpW_s95mdRAQEKR9j8uUz1aaA1yeh9vPVpoDXJ6H2xOqEpR9ZnBfpxcjrnhKLebH-DgUaVPRRxuaI0Qk7mwn&_nc_ohc=bbsKPQgjgMUQ7kNvwEEvoqn&_nc_oc=AdrhvdfEkvQmGAoF-1sprjQn1e0EBaSWbNwMYmsNCoMALoAI8n96_Dmyr-zJAZx8GcE&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=hQs1JBNHZuHWPOnpJGR2Qg&_nc_ss=7a3a8&oh=00_Af0rPwq5yNQzrs_RvCEuJUXQH7TKuQra1LZdhbTKQ6RUXg&oe=69EABA45" alt="Ảnh cá nhân" class="avatar">
+    <h3>Bùi Thị Diệu Chi</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='nguyenkhacgiabao.html'">
+    <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/672685917_1493497855728876_4868868096661539527_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGzXrYYQgbm485AXV-yCmrP8xUamhOIZrvzFRqaE4hmu4Qemb2sg-Z8nASteBAZ0t2xsXbweBNa212LmZa48YzQ&_nc_ohc=wuvUmBnRZXYQ7kNvwEzrScs&_nc_oc=AdrpGJOeDBSTddLp8-pKuKWcT_uSJUbf7KaZZ7Smhi_iaUkhZO9kwf14Nb2vpFznUlk&_nc_zt=23&_nc_ht=scontent.fhan15-1.fna&_nc_gid=HnUAAbsyn3jTjM1sYcsxuA&_nc_ss=7a3a8&oh=00_Af2p1jJ-IEoIftdh3Q_qF4m31lQMazvqbCpJ0PhQSCh3Ow&oe=69EB8CFD" alt="Ảnh cá nhân" class="avatar">
+    <h3>Nguyễn Khắc Gia Bảo</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='nguyentrungkien.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672683912_1493509385727723_7412772297948502917_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHcNkbO8MHFsLTuiV_Jsj5CIbPMTN74QqQhs8xM3vhCpAqEDHu-XcXsrZexO-4Px8Lk6hRf-i3ttzbIUroBslfj&_nc_ohc=yFd1EEgVOp4Q7kNvwEGzYa0&_nc_oc=Ado4muiPDK9H8DeE8scDrfOVIM5iG8uC_4pLB1-1uR4BXB-72JyZAFiorgcFzyqIXlg&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=9IZdv-y8qYNxzzU73jZvSg&_nc_ss=7a3a8&oh=00_Af0lKe6AHAlj0BwBl-vgb82Y-b4sas8XlTGHCXRe0mtPew&oe=69EB8B5C" alt="Ảnh cá nhân" class="avatar">
+    <h3>Nguyễn Trung Kiên</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='chuthithuhuyen.html'">
+    <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/673435766_1493790812366247_5728654771248011354_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHJ2qdO6-aj-FFyQSA0xtGguj1GcUxZh7O6PUZxTFmHs5S5Kd64F9gVIL29fFVqgbSS23B0bKnV7I4uatCX9ZQE&_nc_ohc=7RctpQ9-BIoQ7kNvwGA0WvQ&_nc_oc=AdqHC9pH1ErPmu3KQaE8XDZgIrcRsNI5CttKekf1sBxKTk1GLmNz96vgRTsGMOskZ4c&_nc_zt=23&_nc_ht=scontent.fhan15-1.fna&_nc_gid=8HF8n4X61vQ2gVZZpxFN-g&_nc_ss=7a3a8&oh=00_Af0xXz9d9vmy-j14ozBzwv4K-v2BYYxhJ7auNMLAjAnOhQ&oe=69EBDE06" alt="Ảnh cá nhân" class="avatar">
+    <h3>Chu Thị Thu Huyền</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='takimdung.html'">
+    <img src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/675222704_843181418815240_7632680734244439616_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=13d280&_nc_ohc=m7W-Q7QYPecQ7kNvwEGFxOa&_nc_oc=AdqROSoz3_TJlCx8lCQm0FmhJdv1SvFmnvCaVa_UksX38cHmrw_4UAvS6XNaNvn15lk&_nc_zt=23&_nc_ht=scontent.fhan5-9.fna&_nc_gid=AgaI6WJ2IAGai82XQSb6ww&_nc_ss=7a3a8&oh=00_Af3uub0LPlgrHku6eg4cVv-qvptTSvs2_KGjNYyosVm7uw&oe=69EADA1B" alt="Ảnh cá nhân" class="avatar">
+    <h3>Tạ Kim Dung</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='tranmanhhieu.html'">
+    <img src="https://scontent.fhan5-6.fna.fbcdn.net/v/t39.30808-6/674560697_843105312156184_5258251772196667898_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=13d280&_nc_ohc=QnJfK9ySnuYQ7kNvwEKqZPl&_nc_oc=Adp6_pzErKdEfTq8j7X9i3IU_KRXLwBhicdj3slEAi1eZUHGPlG_z9fFLZiQr5Fhp3Q&_nc_zt=23&_nc_ht=scontent.fhan5-6.fna&_nc_gid=71d0q_auJBPqXJIJJDXihw&_nc_ss=7a3a8&oh=00_Af1A4Vev4yY27sGXQ1wnrKpAo4DRNUvPmUK3j3IMm_RV2A&oe=69EAA9C7" alt="Avatar" class="avatar-img">
+    <h3>Trần Mạnh Hiếu</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='buikhanhduy.html'">
+    <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/672674045_842450868888295_838222831149978477_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=bTCC_GOeqz4Q7kNvwEf-nud&_nc_oc=AdoJ7QLCQFQW19QlEMrRrr3H9F5vtL1TNa47huoAvPU5INbhf20XjLppuiRrHSG8x40&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=dXnImTqY0oCTab3yOh0Kow&_nc_ss=7a3a8&oh=00_Af0aSqkfYhRzzIUcVOzpPBC4PWhSTERsAAl1LVx4Pb4g3w&oe=69E99866" alt="Bùi Khánh Duy">
+    <h3>Bùi Khánh Duy</h3>
+  </div>
+  
+  <div class="card" onclick="window.location.href='luongquangthu.html'">
+    <img src="https://scontent.fhan5-11.fna.fbcdn.net/v/t39.30808-6/676492778_843916542075061_8527897978391086731_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=13d280&_nc_ohc=oGBgcEZG4_UQ7kNvwFROMlq&_nc_oc=Adr1l2guwJlJMY8xuUYFFQZjDqPvWm3nvbdmrwDxT_VryLFD9C-nvE6zPR3pW8heWMY&_nc_zt=23&_nc_ht=scontent.fhan5-11.fna&_nc_gid=kAcWTI3E7u70JBqHB3AWiw&_nc_ss=7a3a8&oh=00_Af2kz4oUBLgQ47lXH2SZr1d4_PyZiw09Q4rFxRXuGDatYg&oe=69EBEE8C" alt="Ảnh cá nhân" class="avatar">
+    <h3>Lương Quang Thu</h3>
+  </div>
+
+</div>
+
+<div class="comment-box">
+  <h3>💬 Lời nhắn</h3>
+  <textarea id="cmt" placeholder="Viết gì đó..."></textarea>
+  <button onclick="addComment()">Gửi</button>
+  <div class="comments" id="comments"></div>
+</div>
+
+<!-- MODAL -->
+<div id="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;">
+  <div style="background:white;padding:20px;border-radius:20px;text-align:center;width:300px;">
+    <img id="pImg" style="width:120px;height:120px;border-radius:50%">
+    <h2 id="pName"></h2>
+    <p id="pInfo"></p>
+    <p id="pExtra"></p>
+    <button onclick="closeModal()">Đóng</button>
+  </div>
+</div>
+
+<script>
+// SEARCH
+function searchName(){
+ let input=document.getElementById('searchBox').value.toLowerCase();
+ let cards=document.getElementsByClassName('card');
+ for(let i=0;i<cards.length;i++){
+   let name=cards[i].innerText.toLowerCase();
+   cards[i].style.display=name.includes(input)?'':'none';
+ }
+}
+
+// COMMENTS
+function loadComments(){
+ let data=JSON.parse(localStorage.getItem('comments')||'[]');
+ let box=document.getElementById('comments');
+ box.innerHTML='';
+ data.forEach(c=>{box.innerHTML+='<p>'+c+'</p>'});
+}
+
+function addComment(){
+ let val=document.getElementById('cmt').value;
+ if(!val) return;
+ let data=JSON.parse(localStorage.getItem('comments')||'[]');
+ data.push(val);
+ localStorage.setItem('comments',JSON.stringify(data));
+ document.getElementById('cmt').value='';
+ loadComments();
+}
+
+loadComments();
+
+// PROFILE
+const profileData = {
+ kiet:{
+   img:"https://i.pravatar.cc/150?img=3",
+   name:"Bùi Tuấn Kiệt",
+   info:"Sinh năm 2006",
+   extra:"💻 Đam mê code | 😎 Chill"
+ }
+};
+
+function showProfile(id){
+ let p = profileData[id];
+ document.getElementById("pImg").src = p.img;
+ document.getElementById("pName").innerText = p.name;
+ document.getElementById("pInfo").innerText = p.info;
+ document.getElementById("pExtra").innerText = p.extra;
+ document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(){
+ document.getElementById("modal").style.display = "none";
+}
+</script>
+
+<div class="slider"> <div class="slides" id="slides"> <div class="group"> <img src="https://scontent.fhan4-6.fna.fbcdn.net/v/t39.30808-6/472498417_122224472696020361_3735435204361867519_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=0LzYD_-WZfUQ7kNvwEps2QA&_nc_oc=AdqpLpn0_T84iGLRBcRrtqWLpAkuPt0wuj1qrnJU_9K_I-Nvmg6_aXWzs8nCkKL3YDE&_nc_zt=23&_nc_ht=scontent.fhan4-6.fna&_nc_gid=5yEmy6jTog6uEvKqY_DIwg&_nc_ss=7a3a8&oh=00_Af1yfljJla42YiizTbeqhi1BE8jXPkqsU9-BL1vnBbVvHQ&oe=69EAC934" onclick="openLightbox(this)"> <img src="https://scontent.fhan4-5.fna.fbcdn.net/v/t39.30808-6/472717471_122224896446020361_7177298599154291442_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Hx3v_c7cS14Q7kNvwG3CYwy&_nc_oc=Adoh1iWTUSvIzFPgZv56QrubRsivXMCqxtDiabtEHfUdG7N9eBAhpvbuyGDY77DOhjk&_nc_zt=23&_nc_ht=scontent.fhan4-5.fna&_nc_gid=7gj8lt4o4YozljOTAY30xA&_nc_ss=7a3a8&oh=00_Af1MWY8pAS2kQepoaQaUnQY6jG5FOZVCAGKn6Jr2yXKDDA&oe=69EAC21A" onclick="openLightbox(this)"> <img src="https://scontent.fhan4-6.fna.fbcdn.net/v/t39.30808-6/475707744_122229499202020361_3248070996460402780_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ixyBFIdxz5EQ7kNvwH2O8VI&_nc_oc=Adq6XkStEZkVd7619oyvSh3Yq7T6JO8O1PVNi_8Hj1UzDbCVUEVN6QqaiC4FQg23plI&_nc_zt=23&_nc_ht=scontent.fhan4-6.fna&_nc_gid=OMC3Vhdi6P9ntsCQWJkb3Q&_nc_ss=7a3a8&oh=00_Af1DY3qYnEvUTZViFxt8R3QbeYbXMubLAJ1AASzu30vQkw&oe=69EACE28" onclick="openLightbox(this)"> </div> <div class="group"> <img src="https://scontent.fhan3-2.fna.fbcdn.net/v/t39.30808-6/480999683_122234277422020361_8113568021811049968_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Xcf604HgZKoQ7kNvwFejchZ&_nc_oc=Ado92ySp76v4GPDemw_w6iz1ICXRulxtKY6tuXtFjtWAlQknU_ObJ7xvCATwEsf7WN0&_nc_zt=23&_nc_ht=scontent.fhan3-2.fna&_nc_gid=ef8CO34pev6eS8aRkS3ZKA&_nc_ss=7a3a8&oh=00_Af1VincGq4tmpaydP-x5mBCPy92eD1_kvsBDZfxDUodK1w&oe=69EAC70C" onclick="openLightbox(this)"> <img src="https://scontent.fhan3-3.fna.fbcdn.net/v/t39.30808-6/482019771_122237245868020361_8168876857843535909_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=-D7DTS6psjwQ7kNvwH71G4-&_nc_oc=AdqqWNhS9NdQu-XNs6n3JFwR5qp84bgRFadzikpKDesmpjENGfsPp6BTH5LJMnfxq5w&_nc_zt=23&_nc_ht=scontent.fhan3-3.fna&_nc_gid=5rXwSz7zcsQTVVydWwVfPQ&_nc_ss=7a3a8&oh=00_Af1c56UMiwA8jHYjgirAwzdPWHbr2r2obTEmbmiovnL_Tg&oe=69EAC58E" onclick="openLightbox(this)"> <img src="https://scontent.fhan3-3.fna.fbcdn.net/v/t39.30808-6/500464074_122252713142020361_4826211596350153036_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=JjZGljM0bxAQ7kNvwGF6FGb&_nc_oc=AdrPBmf5iBpW1jhv8UWFJFL0qn1e273y31B8Dx2kRnZEriY6v5NkzR_ZqR9ESlVPA64&_nc_zt=23&_nc_ht=scontent.fhan3-3.fna&_nc_gid=zGCHfhFaLJlxMsp5RZquNQ&_nc_ss=7a3a8&oh=00_Af34-tP1aGk8exzb7OhUi37yrAabCKweKJyMim_4WpQr2Q&oe=69EABF5C" onclick="openLightbox(this)"> </div> </div> <button class="prev" onclick="prevSlide()">❮</button> <button class="next" onclick="nextSlide()">❯</button> </div> <div id="lightbox" onclick="closeLightbox()"> <img id="light-img"> </div>
+<footer>© 2026 by TUANKIET | LONGHIEU</footer>
+</body>
+</html>
