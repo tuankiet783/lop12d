@@ -1,37 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Trang cá nhân</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Cá Nhân</title>
+    <style>
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://i.postimg.cc/7L49NRr0/23b47f94-1b7a-497a-8cf3-742d62e63731.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            display: flex;
+            justify-content: center;
+        }
+
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        
+         .box {
+            background: rgba(255, 255, 255, 0.5); 
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+        }
+
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+        
+        .name {
+            margin: 0;
+            font-size: 28px;
+            color: #2c3e50;
+        }
+        
+        .age {
+            margin: 5px 0 0 0;
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+
+       
+        .info-table {
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        
+        .info-table td {
+            padding: 10px 5px;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .info-table td:first-child {
+            font-weight: bold;
+            width: 40%;
+            color: #34495e;
+        }
+
+       
+        h3 {
+            margin-top: 0;
+            color: #2980b9;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        
+        .message-text {
+            font-style: italic;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        
+        .links {
+            display: flex;
+        justify-content: center;
+            gap: 15px;
+        }
+        
+        .btn {
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+transition: opacity 0.2s;
+        }
+        
+        .btn:hover {
+            opacity: 0.8;
+        }
+        .btn-home { background-color: #2c3e50; }
+        .btn-fb { background-color: #1877F2; }
+        .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+
+    </style>
 </head>
-<a href="index.html" class="back-link">← Quay lại trang chủ</a>
-  <div style="text-align: center;">
+<body>
 
-  <div style="text-align: center;">
-<body style="text-align: center; font-family: sans-serif; background: #eef2f3; padding: 20px;">
+    <div class="container">
+        
+        <div class="box">
+            <img src="https://i.postimg.cc/MpLxMykZ/f66ccb7c-8b7f-4778-aa14-a9c0fda55fc3.jpg" alt="Ảnh đại diện" class="profile-img">
+            <h1 class="name">ĐỖ THÙY DƯƠNG</h1>
+            <p class="age">10/01/2008 | 18 Tuổi</p>
+        </div>
 
-    <div style="background: white; max-width: 500px; margin: 20px auto; padding: 20px; border: 2px solid #3498db; border-radius: 10px;">
+        <div class="box">
+            <table class="info-table">
+                <tr>
+                    <td>Quê quán:</td>
+                    <td>Hưng Yên</td>
+                </tr>
+                <tr>
+                    <td>Trường:</td>
+                    <td>THPT Hưng Yên</td>
+                </tr>
+                <tr>
+                    <td>Lớp:</td>
+                    <td>12D</td>
+                </tr>
+                <tr>
+                    <td>Chức vụ:</td>
+                    <td>Bí thư Chi Đoàn</td>
+                </tr>
+            </table>
+        </div>
+<div class="box">
+          
+         <h3> Sở thích cá nhân</h3>
+             <p>-Vẽ vời linh tinh,làm đồ handmade</p> 
+             <p>-Xem phim trinh thám, phim kinh dị</p>
+             <p>-Du lịch, trải nghiệm những nơi mới</p>
+             <p>-Nghe nhạc nạp năng lượng</p>
+             <p>-Tìm hiểu về lịch sử kiến trúc</p>
+      
+           
+        <div class="box">
+            <h3> Giới thiệu</h3>
+            <p>Chào mọi người, mình là Đỗ Thùy Dương đến từ tập thể 12D. Mình có niềm đam mê rất lớn với việc định hình không gian sống qua những công trình kiến trúc, mình luôn nỗ lực học tập và trau dồi bản thân để tiến gần hơn với ước mơ. Có môt câu nói mình luôn tâm đắc:"Cách tốt nhất để dự đoán tương lai là tự tay kiến tạo ra nó".</p>
+        </div>
 
-  <div style="text-align: center;">
+        <div class="box">
+            <h3>Đôi lời nhắn gửi tới lớp</h3>
+            <p class="message-text"><p>"3 năm cấp 3 trôi nhanh như một giấc ngủ trưa — vừa chợp mắt đã đến lúc tỉnh dậy.</p>
+<p>Chúc chúng ta bước ra khỏi quãng đời này với thật nhiều dũng khí, mang theo những kỷ niệm đẹp nhất và một trái tim đủ lớn để đón nhận tương lai.</p>
+<p>Chúc mỗi người đều tìm được con đường của riêng mình, dù nhanh hay chậm cũng không lạc lối.
+Chúc cho những ước mơ hôm nay, một ngày nào đó sẽ trở thành hiện thực.</p>
+<p>Và chúc rằng, nhiều năm sau gặp lại, chúng ta vẫn có thể mỉm cười và gọi nhau hai tiếng: “thanh xuân.”Hẹn gặp lại các bạn ở những chương rực rỡ nhất trong cuộc đời, nơi mỗi chúng ta đều đã trở thành phiên bản mà mình hằng mong ước.!"</p>
+        </div>
+        <div class="box">
+            <h3>Tri ân các Thầy cô </h3>
+            <p class="message-text"><p>"Em xin gửi lời tri ân chân thành và sâu sắc nhất tới Thầy Cô – những người đã lặng lẽ gieo từng hạt mầm tri thức và kiên nhẫn chờ chúng em trưởng thành.</p>
+<p>Có những bài học có thể rồi sẽ phai theo năm tháng, nhưng sự tận tâm, yêu thương và những ánh mắt dõi theo đầy kỳ vọng của Thầy Cô thì sẽ còn ở lại mãi trong tim em.</p>
+<p>Mai này khi rời xa mái trường, có thể chúng em sẽ đi về những hướng khác nhau, nhưng chắc chắn một điều:
+trong hành trang của mỗi đứa, luôn có bóng dáng của Thầy Cô – âm thầm mà vững chãi."</p>
+        </div>
 
-        <img src="https://scontent.fhan4-5.fna.fbcdn.net/v/t39.30808-6/674689163_845548268582539_1247459324538346861_n.jpg?stp=cp6_dst-jpg_p526x296_tt6&_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_ohc=YwMbSf839IYQ7kNvwFvFaPQ&_nc_oc=AdrSc6MYqp1CAxa0UVFhkQrSJI06oJRbdh8TCMJsWVJUVqujKzbnjeoDl-2oi0ahWAM&_nc_zt=23&_nc_ht=scontent.fhan4-5.fna&_nc_gid=qFut-Q9D85PQFpJJrqeMsg&_nc_ss=7a3a8&oh=00_Af1GyeBbYpZ_yesRHHgTflXJiyF9SzLE_qxWC_GsVEIDBg&oe=69EBEB6E" alt="Ảnh của em" style="width: 150px; height: 150px; border-radius: 50%; border: 3px solid #3498db;">
-
-        <h1>GIỚI THIỆU BẢN THÂN</h1>
-
-        <p><b>Họ và tên:</b> Đỗ Thùy Dương </p>
-        <p><b>Ngày sinh:</b> 10/01/2008</p>
-        <p><b>Quê quán:</b> Hưng Yên</p>
-        <p><b>Giới thiệu:</b> Em là học sinh lớp 12, yêu thích các môn tự nhiên và đang nỗ lực cho kỳ thi tốt nghiệp sắp tới.</p>
-
-        <hr>
-        <h3>Sở thích cá nhân</h3>
-        <p>Vẽ tranh,lắp ráp mô hình, tìm hiểu về lịch sử kiến trúc .</p>
-
-        <hr>
-        <h3>Lời nhắn gửi lớp và Thầy Cô</h3>
-        <p style="color: #000080; font-style: italic; font-weight: bold;">
-            "Em xin cảm ơn thầy cô đã tận tình dạy bảo. Chúc các bạn lớp mình ai cũng thi đỗ nguyện vọng 1 và luôn thành công trong cuộc sống!"
-        </p>
+        <div class="box links">
+            <a href="index.html" class="btn btn-home">🏠 Home</a>
+            <a href="https://www.facebook.com/share/1CRbJcujRQ/?mibextid=wwXIfr" class="btn btn-fb" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/_duwq.yuht_?igsh=MWx0d2l6NTBiOTFnMw%3D%3D&utm_source=qr" class="btn btn-ig" target="_blank">Instagram</a>
+        </div>
 
     </div>
 
