@@ -456,7 +456,6 @@
 <div id="youtubePlayer" style="display: none;"></div>
 
 <script>
-  // Biến trạng thái nhạc
   let isPlaying = false;
   let player;
   let currentVolume = 40;
@@ -468,7 +467,6 @@
   const volumeSlider = document.getElementById('volumeSlider');
   const volumePercentSpan = document.getElementById('volumePercent');
 
-  // Hiển thị thanh âm lượng khi hover vào nút nhạc
   let hoverTimeout;
   if (toggleBtn) {
     toggleBtn.addEventListener('mouseenter', () => {
@@ -488,7 +486,6 @@
     clearTimeout(hoverTimeout);
   });
 
-  // Hàm tải YouTube API
   function loadYouTubeAPI() {
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
@@ -496,8 +493,6 @@
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   }
 
-  // Khi API sẵn sàng, tạo player với bài hát "Nổi Gió Rồi - Châu Thâm (Piano Cover)"
-  // Video ID: YOSgRy3kqRs (từ link YouTube)
   window.onYouTubeIframeAPIReady = function() {
     player = new YT.Player('youtubePlayer', {
       height: '0',
@@ -522,15 +517,12 @@
     isPlayerReady = true;
     player.setVolume(currentVolume);
     console.log("🎵 Nhạc nền 'Nổi Gió Rồi - Piano Cover' đã sẵn sàng! Âm lượng: " + currentVolume + "%");
-    // Không tự động phát để tránh lỗi trình duyệt, người dùng sẽ bật bằng nút
   }
 
   function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.ENDED) {
-      // Lặp lại bài hát
       player.playVideo();
     }
-    // Cập nhật icon theo trạng thái phát
     if (event.data === YT.PlayerState.PLAYING) {
       isPlaying = true;
       musicIconSpan.textContent = '🎵';
@@ -540,7 +532,6 @@
     }
   }
 
-  // Điều chỉnh âm lượng
   if (volumeSlider) {
     volumeSlider.addEventListener('input', function() {
       currentVolume = this.value;
@@ -562,7 +553,6 @@
     });
   }
 
-  // Bật/tắt nhạc
   if (toggleBtn) {
     toggleBtn.addEventListener('click', function() {
       if (player && isPlayerReady) {
@@ -576,7 +566,6 @@
           isPlaying = true;
         }
       } else {
-        // Nếu player chưa sẵn sàng, thử khởi tạo lại (fallback)
         alert("🎵 Đang tải nhạc, vui lòng chờ vài giây rồi thử lại!");
       }
     });
