@@ -16,13 +16,18 @@
 body{
   background: 
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url("https://scontent.fhan3-3.fna.fbcdn.net/v/t39.30808-6/550217848_672369099233791_4239541391141026060_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=53a332&_nc_ohc=3sxI0e3mJ40Q7kNvwEln-9v&_nc_oc=Adp--_3xWXQfqUUY_FPI2AnkHzlHqwcsBFb5fGJfBnGayCzxiLdO__9-jl8kV5wLTeY&_nc_zt=23&_nc_ht=scontent.fhan3-3.fna&_nc_gid=1AlYe2_XcqRzkPCC34h-SQ&_nc_ss=7a3a8&oh=00_Af2fH76unVV5wcMqK5JKeyQAMe3_SONkbIxwbMMtAR6_xw&oe=69E98C41");
+    url("https://i.postimg.cc/25h2DDr5/IMG-0875.jpg");
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
   color:white;
   overflow-x:hidden;
   transition:0.5s;
+}
+
+body.dark{
+  background:#0f172a;
+  color:#e2e8f0;
 }
 
 .home-btn{
@@ -34,14 +39,9 @@ body{
   border-radius:30px;
   background:linear-gradient(45deg,#00f2fe,#4facfe);
   color:white;
-  font-weight:bold;
   cursor:pointer;
   z-index:9999;
   box-shadow:0 0 15px #00f2fe;
-  transition:0.3s;
-}
-.home-btn:hover{
-  transform:scale(1.1);
 }
 
 #particles{
@@ -58,16 +58,23 @@ body{
   border:1px solid rgba(255,255,255,0.2);
 }
 
-.cover{
-  height:250px;
-  position:relative;
+.profile-box{
+  max-width:350px;
+  margin:100px auto 40px;
+  padding:25px;
+  text-align:center;
+  transition:0.3s;
 }
 
-.avatar{
-  position:absolute;
-  bottom:-60px;
-  left:50%;
-  transform:translateX(-50%);
+.profile-box:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 30px rgba(255,0,150,0.6);
+}
+
+.profile-box .avatar{
+  position:static;
+  margin:auto;
+  margin-bottom:15px;
 }
 
 .avatar img{
@@ -77,15 +84,6 @@ body{
   border:4px solid white;
   box-shadow:0 0 30px #ff4b91;
   animation:float 3s infinite;
-}
-
-.profile{
-  text-align:center;
-  margin-top:80px;
-}
-
-.profile h1{
-  font-size:30px;
 }
 
 .btn{
@@ -125,6 +123,44 @@ h2{
   color:#ff4b91;
 }
 
+/* ===== INFO BOX PRO ===== */
+.info-box{
+  background: rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.25);
+  border-radius:15px;
+  padding:12px 15px;
+  margin-bottom:12px;
+  backdrop-filter: blur(10px);
+  transition:0.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.info-box:hover{
+  transform:translateX(6px) scale(1.02);
+  box-shadow:0 0 15px #ff4b91;
+}
+
+.info-box::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
+  transition:0.6s;
+}
+
+.info-box:hover::before{
+  left:100%;
+}
+
+.info-box.big{
+  line-height:1.6;
+}
+/* ========================= */
+
 .bar{
   height:8px;
   background:#333;
@@ -147,11 +183,6 @@ h2{
   border-radius:50%;
   cursor:pointer;
   z-index:9999;
-  box-shadow:0 0 15px #ff4b91;
-}
-
-.toggle:hover{
-  transform:scale(1.1);
 }
 
 .music{
@@ -176,145 +207,181 @@ h2{
   50%{transform:translateY(-10px)}
   100%{transform:translateY(0)}
 }
+
+/* ===== SOCIAL BUTTON ===== */
+.social{
+  margin-top:15px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+
+.social button{
+  padding:8px 18px;
+  border:none;
+  border-radius:25px;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.fb{
+  background:linear-gradient(45deg,#1877f2,#00c6ff);
+}
+
+.fb:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 15px #1877f2;
+}
+
+.ig{
+  background:linear-gradient(45deg,#feda75,#d62976,#962fbf);
+}
+
+.ig:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 15px #d62976;
+}
 </style>
 </head>
 
 <body>
 
-<button class="home-btn" onclick="goHome()">🏠 HOME</button>
+<button class="home-btn" onclick="goHome()">🏠 Trang chủ</button>
 <canvas id="particles"></canvas>
 <div class="toggle" onclick="toggleMode()">🌙</div>
 
-<div class="cover">
+<div class="profile-box glass">
   <div class="avatar">
-    <img src="https://scontent.fhan4-5.fna.fbcdn.net/v/t39.30808-1/596813777_739405155863518_2341824681048618620_n.jpg?stp=c273.0.1365.1365a_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=e99d92&_nc_ohc=OMdsqbRYoyMQ7kNvwG8Wvhs&_nc_oc=AdoBG4v0CQItkcKnEbKojYC4B5ewfTsk0uKgRJTzIC-Le3eEsfnm73UdQVUwBTHfXI0&_nc_zt=24&_nc_ht=scontent.fhan4-5.fna&_nc_gid=qGeq5jLXvqvlQ987H4vpzQ&_nc_ss=7a3a8&oh=00_Af1rJ-7W9nlpFfaRcPMAuYGHrU7gUXrtIHvnM6V3J35zmA&oe=69E970EB">
+    <img src="https://scontent.fhan4-5.fna.fbcdn.net/v/t39.30808-1/596813777_739405155863518_2341824681048618620_n.jpg?stp=c273.0.1365.1365a_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=e99d92&_nc_ohc=ioVnCXWGCnsQ7kNvwEyML9S&_nc_oc=AdpVf0lzzw4I6lzvGg5aTo1MhA8dNxhuMdg6_yVL9PimsxJqHv8lW7IsbrsuASR9j-8&_nc_zt=24&_nc_ht=scontent.fhan4-5.fna&_nc_gid=SWNkuo83TT3vEfHVtLTXxA&_nc_ss=7a3a8&oh=00_Af2JKQRad1J6HuqM9E1Z_bdp9AS_IDDvGSRLE2ku6vVn-w&oe=69ED656B">
   </div>
-</div>
-
-<div class="profile">
   <h1>Bùi Tuấn Kiệt</h1>
   <p>Bóng rổ | Đẹp trai | Lập trình</p>
-  <button class="btn" onclick="openTikTok()">Follow</button>
+  <button class="btn" onclick="openTikTok()">Tik tok</button>
+  <div class="social">
+  <button class="fb" onclick="openFB()">Facebook</button>
+  <button class="ig" onclick="openIG()">Instagram</button>
+</div>
 </div>
 
 <div class="container">
 
-  <div class="card glass">
-    <h2>📌 Giới thiệu</h2>
-    <p>Họ và tên: Bùi Tuấn Kiệt</p>
-    <br>
-    <p>Ngày sinh: 01/07/2008</p>
-    <br>
-    <p>Quê quán: Phường Phố Hiến - Hưng Yên</p>
-    <br>
-    <p>Tôi là Bùi Tuấn Kiệt, học sinh lớp 12D với niềm đam mê mạnh mẽ dành cho công nghệ và lập trình. Tôi luôn tìm cách nâng cấp kỹ năng của mình qua việc xây dựng các dự án web sáng tạo, hướng đến giao diện hiện đại và trải nghiệm người dùng tối ưu.</p>
-  </div>
+<!-- GIỚI THIỆU -->
+<div class="card glass">
+<h2>📌 Giới thiệu</h2>
+<div class="info-box" style="display:inline-block;">👤 Họ và tên: Bùi Tuấn Kiệt</div>
+<div class="info-box" style="display:inline-block;">🎂 Ngày sinh: 01/07/2008</div>
+<div class="info-box" style="display:inline-block;">📍 Quê quán: Phố Hiến - Hưng Yên</div>
 
-  <div class="card glass">
-    <h2>🎯 Sở thích</h2>
-
-    BÓNG RỔ
-    <div class="bar"><div class="fill" style="width:95%"></div></div>
-
-    LẬP TRÌNH
-    <div class="bar"><div class="fill" style="width:85%"></div></div>
-
-    GAME
-    <div class="bar"><div class="fill" style="width:80%"></div></div>
-
-  </div>
-  
-  <div class="card glass">
-    <h2>💌 Lời nhắn nhủ</h2>
-	
-    “Ba năm cấp 3 trôi qua nhanh hơn mình tưởng. Từ những ngày còn bỡ ngỡ bước vào lớp, đến lúc này ai cũng đã có cho mình những kỷ niệm riêng. Cảm ơn tất cả mọi người vì đã cùng nhau cười, cùng nhau cố gắng và cả những lúc “quậy phá” không thể quên.
-    <br>
-
-Sau này mỗi người một con đường, có thể không còn gặp nhau thường xuyên, nhưng mong rằng khi nhớ lại, chúng ta vẫn mỉm cười vì đã từng là một phần thanh xuân của nhau.
-	<br>
-
-Chúc tất cả sẽ thành công trên con đường mình chọn. Lớp 12D mãi đỉnh ❤️"
-<p style="text-align: right; width: 100%;">
-  —Bùi Tuấn Kiệt—
-</p>
-	</div>
+<div class="info-box big">
+💬 Tôi là Bùi Tuấn Kiệt – học sinh lớp 12D với niềm đam mê bóng rổ và lập trình.
+<br><br>
+Ba năm cấp 3 là một hành trình đáng nhớ với rất nhiều kỷ niệm cùng thầy cô và bạn bè. Tôi luôn cố gắng học hỏi, phát triển bản thân mỗi ngày và không ngừng tiến về phía trước.
+<br><br>
+Với tôi, thanh xuân không chỉ là những thành tích đạt được, mà còn là những khoảnh khắc đã trải qua cùng những người quan trọng.
 </div>
 
-<div class="music">
-  <button onclick="toggleMusic()">🎵</button>
 </div>
 
-<div id="yt-player" style="display:none;"></div>
+<!-- SỞ THÍCH -->
+<div class="card glass">
+<h2>🎯 Sở thích</h2>
+<div class="info-box" style="display:inline-block;">🏀 Chơi bóng rổ</div>
+<div class="info-box" style="display:inline-block;">💻 Lập trình</div>
+<div class="info-box" style="display:inline-block;">🎮 Chơi game</div>
+<div class="info-box" style="display:inline-block;">🏍️ Xe phân khối lớn</div>
+</div>
+
+<!-- LỜI NHẮN -->
+<div class="card glass">
+<h2>💌 Lời nhắn nhủ</h2>
+
+<div class="info-box big">
+Ba năm cấp 3 trôi qua nhanh hơn mình từng nghĩ. Từ những ngày đầu còn bỡ ngỡ bước vào lớp 12D, đến lúc này, mọi thứ dường như chỉ còn lại trong ký ức.
+<br><br>
+Cảm ơn thầy cô vì đã luôn tận tâm dìu dắt, không chỉ dạy kiến thức mà còn dạy chúng em cách trưởng thành. Cảm ơn các bạn vì đã cùng nhau trải qua những giờ học, những lần kiểm tra, những buổi cười đùa và cả những khoảnh khắc không thể quên.
+<br><br>
+Sau này mỗi người sẽ đi trên một con đường khác nhau, nhưng hy vọng rằng khi nhớ lại, chúng ta vẫn sẽ mỉm cười vì đã từng có một thanh xuân rực rỡ bên nhau.
+<br><br>
+Chúc tất cả chúng ta sẽ thành công trên con đường mình đã chọn.
+<br>
+<b>12D – mãi là một phần thanh xuân không thể thay thế ❤️</b>
+
+<p style="text-align:right; margin-top:10px;">— Bùi Tuấn Kiệt —</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ===== NÚT TRANG CHỦ CUỐI ===== -->
+<div style="text-align:center; margin:40px 0;">
+  <button onclick="goHome()" style="
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#00f2fe;
+    color:white;
+    cursor:pointer;">
+    🏠 Trở về trang chủ
+  </button>
+</div>
 
 <script>
-	
 function goHome(){
   window.location.href="index.html";
 }
 
-let dark=false;
 function toggleMode(){
-  let btn=document.querySelector(".toggle");
-
-  if(!dark){
-    document.body.style.filter="brightness(0.6)";
-    btn.innerHTML="☀️";
-    dark=true;
-  }else{
-    document.body.style.filter="brightness(1)";
-    btn.innerHTML="🌙";
-    dark=false;
-  }
-}
-
-let canvas=document.getElementById("particles");
-let ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-for(let i=0;i<80;i++){
-  particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*3,d:Math.random()*1});
-}
-
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="white";
-  particles.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fill();
-  });
-  particles.forEach(p=>{
-    p.y+=p.d;
-    if(p.y>canvas.height) p.y=0;
-  });
-}
-setInterval(draw,30);
-
-let player,isPlaying=false;
-var tag=document.createElement('script');
-tag.src="https://www.youtube.com/iframe_api";
-document.body.appendChild(tag);
-
-function onYouTubeIframeAPIReady(){
-  player=new YT.Player('yt-player',{
-    height:'0',width:'0',
-    videoId:'CgZbE_EhTaM',
-    playerVars:{loop:1,playlist:'CgZbE_EhTaM'}
-  });
+  document.body.classList.toggle("dark");
 }
 
 function openTikTok(){
-  window.open("https://www.tiktok.com/@tuankiet_0107?lang=vi-VN","_blank");
+  window.open("https://www.tiktok.com/@tuankiet_0107","_blank");
 }
+
+</script>
+<div class="music">
+  <button onclick="toggleMusic()">🎵</button>
+</div>
+<div style="position:fixed; width:0; height:0; overflow:hidden;">
+  <iframe id="ytMusic"
+    src="https://www.youtube.com/embed/4KbtyZylkpM?enablejsapi=1&loop=1&playlist=4KbtyZylkpM"
+    frameborder="0"
+    allow="autoplay">
+  </iframe>
+</div>
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+let player;
+let isPlaying = false;
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('ytMusic');
+}
+
 function toggleMusic(){
-  if(player){
-    if(isPlaying){player.pauseVideo();isPlaying=false;}
-    else{player.playVideo();isPlaying=true;}
+  if(!player) return;
+
+  if(isPlaying){
+    player.pauseVideo();
+  } else {
+    player.playVideo();
   }
+
+  isPlaying = !isPlaying;
+}
+
+function openFB(){
+  window.open("https://www.facebook.com/tuan.kiet.377271", "_blank");
+}
+
+function openIG(){
+  window.open("https://www.instagram.com/tuankiet0178/", "_blank");
 }
 </script>
-
 </body>
 </html>
